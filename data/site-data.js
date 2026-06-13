@@ -1,5 +1,5 @@
 window.SITE_DATA = {
-  updatedAt: "2026-06-13 23:14",
+  updatedAt: "2026-06-13 23:30",
   dashboard: {
     headline: "世界杯预测、复盘与规律研究的日更工作台",
     subtitle: "把赛前判断、赛后校准、魔咒专题和数据趋势放在同一套结构里，让每天的内容可以持续沉淀。",
@@ -24,30 +24,30 @@ window.SITE_DATA = {
     reviewCards: [
       {
         label: "最新复盘",
+        match: "美国 vs 巴拉圭",
+        result: "实际比分：4-1",
+        note: "胜负方向判断对了，但 1-0 小胜被实际 4-1 完全放大。",
+        articleId: "review-usa-paraguay"
+      },
+      {
+        label: "最新复盘",
         match: "加拿大 vs 波黑",
         result: "实际比分：1-1",
         note: "主场压制没有兑现成3分，但备选比分和小球方向都对了。",
         articleId: "review-canada-bosnia"
-      },
-      {
-        label: "最新复盘",
-        match: "韩国 vs 捷克",
-        result: "实际比分：2-1",
-        note: "战术框架判断较准，但胜平负和大小球都偏保守。",
-        articleId: "review-korea-czech"
       }
     ],
     metrics: [
-      { label: "站内文章", value: "10", note: "预测、复盘、专题" },
-      { label: "已复盘场次", value: "2", note: "样本仍小，先看结构命中率" },
-      { label: "备选比分覆盖", value: "100%", note: "2/2，韩国2-1捷克、加拿大1-1波黑" },
-      { label: "复盘评分", value: "6.5", note: "两场样本，主比分仍需继续校准" }
+      { label: "站内文章", value: "12", note: "预测、复盘、专题" },
+      { label: "已复盘场次", value: "3", note: "样本仍小，先看结构命中率" },
+      { label: "备选比分覆盖", value: "67%", note: "2/3，美国4-1未覆盖" },
+      { label: "复盘评分", value: "6.2", note: "三场样本，方向判断优于主比分判断" }
     ],
     model: [
-      { label: "胜平负命中", value: 0, total: 2, tone: "red" },
-      { label: "精确比分命中", value: 0, total: 2, tone: "red" },
-      { label: "备选比分覆盖", value: 2, total: 2, tone: "green" },
-      { label: "大小球命中", value: 1, total: 2, tone: "gold" }
+      { label: "胜平负命中", value: 1, total: 3, tone: "gold" },
+      { label: "精确比分命中", value: 0, total: 3, tone: "red" },
+      { label: "备选比分覆盖", value: 2, total: 3, tone: "gold" },
+      { label: "大小球命中", value: 1, total: 3, tone: "red" }
     ],
     signals: [
       { label: "魔咒雷达", value: "西班牙 / 法国", note: "专题模型给出的冠军主线候选" },
@@ -63,6 +63,24 @@ window.SITE_DATA = {
     ]
   },
   articles: [
+    {
+      id: "review-usa-paraguay",
+      type: "review",
+      section: "赛后复盘",
+      title: "美国 vs 巴拉圭复盘：为什么 1-0 小胜判断被 4-1 完全放大？",
+      date: "2026-06-13",
+      match: "美国 vs 巴拉圭",
+      summary: "方向判断对了，但过度依赖稳态防守数据，严重低估了美国主场揭幕战的强度和比赛失控后的放大效应。",
+      file: "review-usa-paraguay.md",
+      tags: ["赛后复盘", "概率校准", "东道主样本"],
+      stats: [
+        { label: "实际比分", value: "美国 4-1" },
+        { label: "胜平负", value: "命中" },
+        { label: "大小球", value: "未命中" },
+        { label: "复盘评分", value: "5.5/10" }
+      ],
+      related: ["prediction-usa-paraguay", "feature-group-round-one", "feature-over-under-round-one"]
+    },
     {
       id: "prediction-qatar-switzerland",
       type: "prediction",
@@ -116,6 +134,24 @@ window.SITE_DATA = {
         { label: "复盘评分", value: "7.0/10" }
       ],
       related: ["prediction-canada-bosnia", "feature-over-under-round-one"]
+    },
+    {
+      id: "prediction-usa-paraguay",
+      type: "prediction",
+      section: "赛前预测",
+      title: "美国 vs 巴拉圭预测：主场揭幕战能否撬开南美低位防线？",
+      date: "2026-06-13",
+      match: "美国 vs 巴拉圭",
+      summary: "美国整体实力和主场声势更强，但巴拉圭的防守纪律会把比赛拖进深水区。原预测给出美国 1-0 小胜。",
+      file: "prediction-usa-paraguay.md",
+      tags: ["赛前预测", "D组", "主场优势", "低比分"],
+      stats: [
+        { label: "预测比分", value: "1-0" },
+        { label: "主胜/平/客胜", value: "48/30/22" },
+        { label: "大小球", value: "小于2.5" },
+        { label: "置信度", value: "中" }
+      ],
+      related: ["review-usa-paraguay", "feature-group-round-one", "feature-over-under-round-one"]
     },
     {
       id: "review-korea-czech",
