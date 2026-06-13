@@ -1,43 +1,43 @@
 window.SITE_DATA = {
-  updatedAt: "2026-06-12 18:30",
+  updatedAt: "2026-06-13 22:44",
   dashboard: {
     headline: "世界杯预测、复盘与规律研究的日更工作台",
     subtitle: "把赛前判断、赛后校准、魔咒专题和数据趋势放在同一套结构里，让每天的内容可以持续沉淀。",
     today: {
       title: "今日主推",
-      match: "加拿大 vs 波黑",
-      time: "2026-06-13 03:00 北京时间",
-      score: "加拿大 1-0 波黑",
+      match: "巴西 vs 摩洛哥",
+      time: "2026-06-14 06:00 北京时间",
+      score: "巴西 2-1 摩洛哥",
       confidence: "中",
       probabilities: [
-        { label: "加拿大胜", value: 40, tone: "green" },
-        { label: "平局", value: 34, tone: "gold" },
-        { label: "波黑胜", value: 26, tone: "red" }
+        { label: "巴西胜", value: 42, tone: "green" },
+        { label: "平局", value: 31, tone: "gold" },
+        { label: "摩洛哥胜", value: 27, tone: "red" }
       ],
       reasons: [
-        "加拿大近10场7次零封，防守端稳定性更好",
-        "波黑10场不败含金量需打折，70%为平局",
-        "总 xG 区间预计 1.5-1.9，低比分倾向明显"
+        "安切洛蒂世界杯首秀更可能先求控场，而不是直接对攻",
+        "摩洛哥的边路推进和反击效率，足以把巴西拖进细节战",
+        "内马尔与 Rodrygo 缺席后，巴西前场更依赖维尼修斯单点爆破"
       ],
-      articleId: "prediction-canada-bosnia"
+      articleId: "prediction-brazil-morocco"
     },
     metrics: [
-      { label: "站内文章", value: "7", note: "预测、复盘、专题" },
-      { label: "已复盘场次", value: "1", note: "样本仍小，谨慎解读" },
-      { label: "备选比分覆盖", value: "100%", note: "1/1，韩国2-1捷克" },
-      { label: "复盘评分", value: "6.0", note: "首场模型质量基线" }
+      { label: "站内文章", value: "9", note: "预测、复盘、专题" },
+      { label: "已复盘场次", value: "2", note: "样本仍小，先看结构命中率" },
+      { label: "备选比分覆盖", value: "100%", note: "2/2，韩国2-1捷克、加拿大1-1波黑" },
+      { label: "复盘评分", value: "6.5", note: "两场样本，主比分仍需继续校准" }
     ],
     model: [
-      { label: "胜平负命中", value: 0, total: 1, tone: "red" },
-      { label: "精确比分命中", value: 0, total: 1, tone: "red" },
-      { label: "备选比分覆盖", value: 1, total: 1, tone: "green" },
-      { label: "大小球命中", value: 0, total: 1, tone: "red" }
+      { label: "胜平负命中", value: 0, total: 2, tone: "red" },
+      { label: "精确比分命中", value: 0, total: 2, tone: "red" },
+      { label: "备选比分覆盖", value: 2, total: 2, tone: "green" },
+      { label: "大小球命中", value: 1, total: 2, tone: "gold" }
     ],
     signals: [
       { label: "魔咒雷达", value: "西班牙 / 法国", note: "专题模型给出的冠军主线候选" },
       { label: "首轮大小球", value: "11 大 / 10 小", note: "另有3场建议观望" },
       { label: "前3场历史均值", value: "7.2球", note: "近6届前3场总进球均值" },
-      { label: "冷门观察", value: "低比分首轮", note: "小组赛首轮普遍偏谨慎" }
+      { label: "冷门观察", value: "巴西首秀承压", note: "摩洛哥反击质量足以把比赛拖进拉锯" }
     ],
     workflow: [
       "赛前：写出比分、概率、xG区间、关键变量",
@@ -47,6 +47,42 @@ window.SITE_DATA = {
     ]
   },
   articles: [
+    {
+      id: "prediction-brazil-morocco",
+      type: "prediction",
+      section: "赛前预测",
+      title: "巴西 vs 摩洛哥预测：安切洛蒂首秀会被反击拖进拉锯吗？",
+      date: "2026-06-14",
+      match: "巴西 vs 摩洛哥",
+      summary: "巴西仍是更可能赢球的一方，但在内马尔与 Rodrygo 缺席的情况下，这场更像控场与反击效率的细节战。",
+      file: "prediction-brazil-morocco.md",
+      tags: ["赛前预测", "C组", "强强对话", "反击"],
+      stats: [
+        { label: "预测比分", value: "2-1" },
+        { label: "主胜/平/客胜", value: "42/31/27" },
+        { label: "总进球", value: "2-3球" },
+        { label: "置信度", value: "中" }
+      ],
+      related: ["feature-group-round-one", "feature-over-under-round-one"]
+    },
+    {
+      id: "review-canada-bosnia",
+      type: "review",
+      section: "赛后复盘",
+      title: "加拿大 vs 波黑复盘：为什么主胜判断被 1-1 拖住？",
+      date: "2026-06-13",
+      match: "加拿大 vs 波黑",
+      summary: "低比分框架和备选比分都对了，但把主场压制直接换算成主胜，导致结果排序偏激进。",
+      file: "review-canada-bosnia.md",
+      tags: ["赛后复盘", "备选比分", "概率校准"],
+      stats: [
+        { label: "实际比分", value: "加拿大 1-1" },
+        { label: "胜平负", value: "未命中" },
+        { label: "备选比分", value: "命中" },
+        { label: "复盘评分", value: "7.0/10" }
+      ],
+      related: ["prediction-canada-bosnia", "feature-over-under-round-one"]
+    },
     {
       id: "prediction-canada-bosnia",
       type: "prediction",
@@ -63,7 +99,7 @@ window.SITE_DATA = {
         { label: "大小球", value: "小于2.5" },
         { label: "置信度", value: "中" }
       ],
-      related: ["feature-over-under-round-one", "feature-first-three-goals"]
+      related: ["review-canada-bosnia", "feature-over-under-round-one", "feature-first-three-goals"]
     },
     {
       id: "prediction-korea-czech",
