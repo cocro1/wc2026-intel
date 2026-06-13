@@ -58,13 +58,22 @@
             '<a class="button secondary" href="features.html">进入专题研究</a>',
           '</div>',
         '</div>',
-        renderTodayCard(d.today),
+        renderHeroStack(d.today, d.reviewCards || []),
       '</section>',
       renderMetricSection("核心仪表盘", "先看站点当前样本、模型表现和最新风险信号。", d.metrics),
       renderModelSection(d.model),
       renderSignalSection(d.signals),
       renderWorkflow(d.workflow),
       renderLatestSection(latest)
+    ].join("");
+  }
+
+  function renderHeroStack(today, reviewCards) {
+    return [
+      '<div class="hero-stack">',
+        renderTodayCard(today),
+        reviewCards.length ? renderReviewCards(reviewCards) : "",
+      '</div>'
     ].join("");
   }
 
@@ -92,6 +101,28 @@
           '<a class="button" href="' + articleUrl(today.articleId) + '">阅读完整预测</a>',
         '</div>',
       '</aside>'
+    ].join("");
+  }
+
+  function renderReviewCards(items) {
+    return [
+      '<div class="side-card-grid">',
+        items.map(renderReviewCard).join(""),
+      '</div>'
+    ].join("");
+  }
+
+  function renderReviewCard(item) {
+    return [
+      '<article class="side-card section-panel">',
+        '<div class="side-card-head">',
+          '<span class="pill gold">' + escapeHtml(item.label) + '</span>',
+          '<span class="metric-note">' + escapeHtml(item.result) + '</span>',
+        '</div>',
+        '<h3>' + escapeHtml(item.match) + '</h3>',
+        '<p class="side-card-note">' + escapeHtml(item.note) + '</p>',
+        '<a class="text-link" href="' + articleUrl(item.articleId) + '">阅读复盘</a>',
+      '</article>'
     ].join("");
   }
 

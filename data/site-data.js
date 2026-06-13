@@ -1,5 +1,5 @@
 window.SITE_DATA = {
-  updatedAt: "2026-06-13 22:44",
+  updatedAt: "2026-06-13 23:14",
   dashboard: {
     headline: "世界杯预测、复盘与规律研究的日更工作台",
     subtitle: "把赛前判断、赛后校准、魔咒专题和数据趋势放在同一套结构里，让每天的内容可以持续沉淀。",
@@ -21,8 +21,24 @@ window.SITE_DATA = {
       ],
       articleId: "prediction-brazil-morocco"
     },
+    reviewCards: [
+      {
+        label: "最新复盘",
+        match: "加拿大 vs 波黑",
+        result: "实际比分：1-1",
+        note: "主场压制没有兑现成3分，但备选比分和小球方向都对了。",
+        articleId: "review-canada-bosnia"
+      },
+      {
+        label: "最新复盘",
+        match: "韩国 vs 捷克",
+        result: "实际比分：2-1",
+        note: "战术框架判断较准，但胜平负和大小球都偏保守。",
+        articleId: "review-korea-czech"
+      }
+    ],
     metrics: [
-      { label: "站内文章", value: "9", note: "预测、复盘、专题" },
+      { label: "站内文章", value: "10", note: "预测、复盘、专题" },
       { label: "已复盘场次", value: "2", note: "样本仍小，先看结构命中率" },
       { label: "备选比分覆盖", value: "100%", note: "2/2，韩国2-1捷克、加拿大1-1波黑" },
       { label: "复盘评分", value: "6.5", note: "两场样本，主比分仍需继续校准" }
@@ -47,6 +63,24 @@ window.SITE_DATA = {
     ]
   },
   articles: [
+    {
+      id: "prediction-qatar-switzerland",
+      type: "prediction",
+      section: "赛前预测",
+      title: "卡塔尔 vs 瑞士预测：加拿大和波黑打平后，谁先抢到主动权？",
+      date: "2026-06-14",
+      match: "卡塔尔 vs 瑞士",
+      summary: "B组首场已经踢成平局，这让本场的价值被进一步放大。瑞士更稳，但比赛仍然更像低比分控险战。",
+      file: "prediction-qatar-switzerland.md",
+      tags: ["赛前预测", "B组", "低比分", "出线主动权"],
+      stats: [
+        { label: "预测比分", value: "0-1" },
+        { label: "主胜/平/客胜", value: "23/29/48" },
+        { label: "总进球", value: "1-2球" },
+        { label: "置信度", value: "中" }
+      ],
+      related: ["prediction-canada-bosnia", "review-canada-bosnia", "feature-group-round-one"]
+    },
     {
       id: "prediction-brazil-morocco",
       type: "prediction",
@@ -84,6 +118,24 @@ window.SITE_DATA = {
       related: ["prediction-canada-bosnia", "feature-over-under-round-one"]
     },
     {
+      id: "review-korea-czech",
+      type: "review",
+      section: "赛后复盘",
+      title: "韩国 vs 捷克复盘：为什么1-1判断偏保守？",
+      date: "2026-06-12",
+      match: "韩国 vs 捷克",
+      summary: "预测战术框架较准，但赛果、大小球和关键替补变量判断偏差明显。复盘指出门将、替补、球员数据库是主要补强方向。",
+      file: "review-korea-czech.md",
+      tags: ["赛后复盘", "模型修正", "概率校准"],
+      stats: [
+        { label: "实际比分", value: "韩国 2-1" },
+        { label: "胜平负", value: "未命中" },
+        { label: "备选比分", value: "命中" },
+        { label: "复盘评分", value: "6.0/10" }
+      ],
+      related: ["prediction-korea-czech", "feature-over-under-round-one"]
+    },
+    {
       id: "prediction-canada-bosnia",
       type: "prediction",
       section: "赛前预测",
@@ -118,24 +170,6 @@ window.SITE_DATA = {
         { label: "置信度", value: "中" }
       ],
       related: ["review-korea-czech"]
-    },
-    {
-      id: "review-korea-czech",
-      type: "review",
-      section: "赛后复盘",
-      title: "韩国 vs 捷克复盘：为什么1-1判断偏保守？",
-      date: "2026-06-12",
-      match: "韩国 vs 捷克",
-      summary: "预测战术框架较准，但赛果、大小球和关键替补变量判断偏差明显。复盘指出门将、替补、球员数据库是主要补强方向。",
-      file: "review-korea-czech.md",
-      tags: ["赛后复盘", "模型修正", "概率校准"],
-      stats: [
-        { label: "实际比分", value: "韩国 2-1" },
-        { label: "胜平负", value: "未命中" },
-        { label: "备选比分", value: "命中" },
-        { label: "复盘评分", value: "6.0/10" }
-      ],
-      related: ["prediction-korea-czech", "feature-over-under-round-one"]
     },
     {
       id: "feature-curses-champion",
