@@ -37,6 +37,31 @@ const FEATURE_OVERRIDES = {
     id: "feature-blowout-analysis",
     file: "feature-blowout-analysis.md",
     subtype: "强弱差模型"
+  },
+  "2026世界杯战报与预测_0616.md": {
+    id: "feature-daily-brief-2026-06-16",
+    file: "feature-daily-brief-2026-06-16.md",
+    subtype: "赛程观察"
+  },
+  "2026世界杯主教练分析_报告一_AD组.md": {
+    id: "feature-coach-analysis-groups-ad",
+    file: "feature-coach-analysis-groups-ad.md",
+    subtype: "教练研究"
+  },
+  "2026世界杯主教练分析_报告二_EH组.md": {
+    id: "feature-coach-analysis-groups-eh",
+    file: "feature-coach-analysis-groups-eh.md",
+    subtype: "教练研究"
+  },
+  "2026世界杯主教练分析_报告三_IL组.md": {
+    id: "feature-coach-analysis-groups-il",
+    file: "feature-coach-analysis-groups-il.md",
+    subtype: "教练研究"
+  },
+  "wc2026_blowout_prediction.md": {
+    id: "feature-wc2026-blowout-prediction",
+    file: "feature-wc2026-blowout-prediction.md",
+    subtype: "大比分模型"
   }
 };
 
@@ -129,6 +154,7 @@ function buildArticle(name) {
 }
 
 function detectType(name) {
+  if (FEATURE_OVERRIDES[name]) return "feature";
   if (name.startsWith("review-")) return "review";
   if (name.includes("prediction")) return "prediction";
   return "feature";
