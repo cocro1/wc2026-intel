@@ -1,121 +1,121 @@
 window.SITE_DATA = {
-  "updatedAt": "2026-06-16 19:04",
+  "updatedAt": "2026-06-17 19:02",
   "dashboard": {
     "headline": "2026 世界杯预测、复盘与专题研究中枢",
     "subtitle": "把赛前判断、赛后校准、专题模型和趋势信号放进同一套静态结构里，方便日更追踪。",
     "today": {
       "title": "今日主推",
-      "match": "伊拉克 vs 挪威",
-      "time": "2026-06-16",
-      "score": "挪威将以2-3球的差距完胜伊拉克——这是本届世界杯小组赛中最无悬念的对决之一。",
+      "match": "乌兹别克斯坦 vs 哥伦比亚",
+      "time": "2026-06-17",
+      "score": "哥伦比亚将以2-0或1-0取胜，乌兹别克斯坦几乎不可能创造奇迹。但乌兹别克斯坦的防守可能比xG数据暗示的更顽强——总比分可能在3球以内。",
       "confidence": "高",
       "probabilities": [
         {
-          "label": "伊拉克胜",
-          "value": 5,
+          "label": "哥伦比亚胜",
+          "value": 72,
           "tone": "green"
         },
         {
           "label": "平局",
-          "value": 13,
+          "value": 18,
           "tone": "gold"
         },
         {
-          "label": "挪威胜",
-          "value": 82,
+          "label": "乌兹别克斯坦胜",
+          "value": 10,
           "tone": "red"
         }
       ],
       "reasons": [
-        "哈兰德是\"降维打击\"：当今世界最顶级的中锋面对中东联赛的中卫组合，这不是\"实力差距\"而是\"维度差距\"。哈兰德在英超面对范戴克/迪亚斯等世界级中卫都能持续进球，面对苏拉卡/塔赫辛完全可能上演帽子戏法。伊拉克没有\"防守哈兰德的方案\"——只有\"祈祷哈兰德状态不好\"。",
-        "厄德高 vs 伊克巴尔是\"阶层差距\"：阿森纳队长、英超顶级组织核心 vs 乌得勒支创意型中场。厄德高的传球范围、空间洞察力和大赛经验远非伊克巴尔能比。伊拉克的中场将被全面压制，预计控球率仅30-35%。",
-        "大赛折扣差距是\"隐性鸿沟\"：伊拉克 ×0.72 vs 挪威 ×0.88，这意味着在世界杯舞台上，伊拉克的实际发挥可能比热身赛低28%，而挪威仅低12%。这16%的差距在\"强vs弱\"的对决中会被放大——强者越强、弱者越弱。"
+        "实力差距全方位： 哥伦比亚FIFA #13，拥有路易斯·迪亚斯（拜仁世界级）+J罗（世界杯金靴）+英超两名首发。乌兹别克斯坦FIFA #58，除胡萨诺夫（曼城轮换）外所有球员来自亚洲联赛。差距不仅是排名，而是联赛质量的\"级差\"。",
+        "2,240米海拔是第12名球员，碾压性地指向哥伦比亚： 氧气减少22%的生理影响对从未在高海拔训练过的乌兹别克斯坦球员极为严重。他们的体能可能在60-65分钟大幅衰减——恰好在哥伦比亚最需要\"杀死比赛\"的时间窗口出现。",
+        "但乌兹别克斯坦不是一支容易被击溃的球队： 对荷兰仅1-2失利（荷兰是Tier 1对手），AFC预选赛4场不败仅失2球。卡纳瓦罗的5后卫防守体系虽然不出彩，但纪律严明。J罗和迪亚斯可能需要在30分钟后才能找到第一个进球。"
       ],
-      "articleId": "prediction-iraq-norway"
+      "articleId": "prediction-uzbekistan-colombia"
     },
     "reviewCards": [
       {
         "label": "最新复盘",
-        "match": "瑞典 vs 突尼斯",
-        "result": "瑞典 vs 突尼斯",
-        "note": "瑞典5-1大胜突尼斯，是今日5场比赛中预测方向唯一完全正确的一场（胜负判断命中）。虽然比分差距巨大（预测2-1，实际5-1），但\"瑞典胜\"的核心判断是准确的，这也是本场获得6.5/10最高评分的主要原因。",
-        "articleId": "review-sweden-tunisia"
+        "match": "奥地利 vs 约旦",
+        "result": "奥地利 1-0 约旦（第二备选·12%）",
+        "note": "奥地利取胜+零封+低比分三大核心判断全部命中。1-0恰好落在第二备选（12%）。连续3场1-0不是偶然——它是朗尼克Gegenpressing体系下进攻效率的结构性特征。如果让\"模式一致性\"驱动主预测选择（1-0而非2-0），评分将达到…",
+        "articleId": "review-austria-jordan"
       },
       {
         "label": "最新复盘",
-        "match": "伊朗 vs 新西兰",
-        "result": "伊朗 vs 新西兰",
-        "note": "伊朗2-2战平新西兰，又一场\"弱队进攻超预期\"的比赛。Elijah Just的梅开二度（7'和54'）是本场最大惊喜，模型完全没有预测到新西兰能够打入2球，更不用说有球员能梅开二度。这再次印证了世界杯小组赛中\"弱队进攻爆发\"的系统性倾向。",
-        "articleId": "review-iran-new-zealand"
+        "match": "瑞典 vs 突尼斯",
+        "result": "5-1",
+        "note": "瑞典5-1大胜突尼斯，是今日5场比赛中预测方向唯一完全正确的一场（胜负判断命中）。虽然比分差距巨大（预测2-1，实际5-1），但\"瑞典胜\"的核心判断是准确的，这也是本场获得6.5/10最高评分的主要原因。",
+        "articleId": "review-sweden-tunisia"
       }
     ],
     "metrics": [
       {
         "label": "站内文章",
-        "value": "49",
+        "value": "50",
         "note": "四大板块统一索引，按时间倒序更新"
       },
       {
         "label": "已复盘场次",
-        "value": "15",
+        "value": "16",
         "note": "复盘样本扩大后，模型判断更可校准"
       },
       {
         "label": "胜平负命中",
-        "value": "27%",
-        "note": "4/15，先看方向稳定性"
+        "value": "31%",
+        "note": "5/16，先看方向稳定性"
       },
       {
         "label": "复盘评分",
-        "value": "5.4",
+        "value": "5.5",
         "note": "根据复盘文中的自评分动态更新"
       }
     ],
     "model": [
       {
         "label": "胜平负命中",
-        "value": 4,
-        "total": 15,
+        "value": 5,
+        "total": 16,
         "tone": "red"
       },
       {
         "label": "精确比分命中",
         "value": 0,
-        "total": 15,
+        "total": 16,
         "tone": "red"
       },
       {
         "label": "备选比分覆盖",
-        "value": 2,
-        "total": 15,
+        "value": 3,
+        "total": 16,
         "tone": "red"
       },
       {
         "label": "大小球命中",
-        "value": 5,
-        "total": 15,
-        "tone": "red"
+        "value": 8,
+        "total": 16,
+        "tone": "gold"
       }
     ],
     "signals": [
       {
         "label": "今日主推",
-        "value": "伊拉克 vs 挪威",
-        "note": "挪威将以2-3球的差距完胜伊拉克——这是本届世界杯小组赛中最无悬念的对决之一。"
+        "value": "乌兹别克斯坦 vs 哥伦比亚",
+        "note": "哥伦比亚将以2-0或1-0取胜，乌兹别克斯坦几乎不可能创造奇迹。但乌兹别克斯坦的防守可能比xG数据暗示的更顽强——总比分可能在3球以内。"
       },
       {
         "label": "最新专题",
-        "value": "2026 FIFA World Cup 战报 & 预测",
-        "note": "- 时间：2026年6月11日 – 7月19日 - 主办国：美国、加拿大、墨西哥（三国联办，史上首次） - 赛制：首次扩军至48队（12组×4队），每组前2 + 8个最佳第三名晋级32强 - 总场次：104场（从64场扩增） - 截至6…"
+        "value": "2026 世界杯小组赛「大比分高概率场次」预测分析",
+        "note": "2026 世界杯小组赛 72 场中，极高风险（≥70% 概率）的大比分场次约 6-7 场，高风险（40-70%）约 8-10 场。四支首秀球队（库拉索、佛得角、约旦、乌兹别克斯坦）+ 两支久违回归球队（海地、伊拉克）是主要\"受害者\"。"
       },
       {
         "label": "最新复盘",
-        "value": "瑞典 vs 突尼斯",
-        "note": "瑞典5-1大胜突尼斯，是今日5场比赛中预测方向唯一完全正确的一场（胜负判断命中）。虽然比分差距巨大（预测2-1，实际5-1），但\"瑞典胜\"的核心判断是准确的，这也是本场获得6.5/10最高评分的主要原因。"
+        "value": "奥地利 vs 约旦",
+        "note": "奥地利取胜+零封+低比分三大核心判断全部命中。1-0恰好落在第二备选（12%）。连续3场1-0不是偶然——它是朗尼克Gegenpressing体系下进攻效率的结构性特征。如果让\"模式一致性\"驱动主预测选择（1-0而非2-0），评分将达到…"
       },
       {
         "label": "预测储备",
-        "value": "4 场",
+        "value": "0 场",
         "note": "已提前写入后续赛程的赛前预测"
       }
     ],
@@ -280,6 +280,123 @@ window.SITE_DATA = {
       "match": "葡萄牙 vs 民主刚果"
     },
     {
+      "id": "feature-wc2026-blowout-prediction",
+      "type": "feature",
+      "section": "专题研究",
+      "title": "2026 世界杯小组赛「大比分高概率场次」预测分析",
+      "date": "2026-06-17",
+      "summary": "2026 世界杯小组赛 72 场中，极高风险（≥70% 概率）的大比分场次约 6-7 场，高风险（40-70%）约 8-10 场。四支首秀球队（库拉索、佛得角、约旦、乌兹别克斯坦）+ 两支久违回归球队（海地、伊拉克）是主要\"受害者\"。",
+      "file": "feature-wc2026-blowout-prediction.md",
+      "tags": [
+        "小组赛",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "1",
+          "value": "FIFA 排名差 ≥ 30"
+        },
+        {
+          "label": "2",
+          "value": "弱队为世界杯新军"
+        },
+        {
+          "label": "3",
+          "value": "弱队久违参赛 / 经验严重不足"
+        },
+        {
+          "label": "4",
+          "value": "亚洲/非洲防线 vs 欧洲/南美顶级锋线"
+        }
+      ],
+      "related": [
+        "feature-blowout-analysis",
+        "feature-daily-brief-2026-06-16",
+        "feature-coach-analysis-groups-il"
+      ],
+      "subtype": "大比分模型",
+      "match": "亚洲/非洲防线 vs 欧洲/南美顶级锋线"
+    },
+    {
+      "id": "feature-blowout-analysis",
+      "type": "feature",
+      "section": "专题研究",
+      "title": "2018 & 2022 世界杯「大比分比赛」特征深度分析报告",
+      "date": "2026-06-17",
+      "summary": "大比分比赛的三大支柱：实力断崖差 × 早期进球 × 心理崩溃",
+      "file": "feature-blowout-analysis.md",
+      "tags": [
+        "魔咒",
+        "进球趋势",
+        "小组赛",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "1",
+          "value": "小组赛 A 组"
+        },
+        {
+          "label": "2",
+          "value": "小组赛 G 组"
+        },
+        {
+          "label": "3",
+          "value": "小组赛 G 组"
+        },
+        {
+          "label": "4",
+          "value": "小组赛 B 组"
+        }
+      ],
+      "related": [
+        "feature-wc2026-blowout-prediction",
+        "feature-daily-brief-2026-06-16",
+        "feature-coach-analysis-groups-il"
+      ],
+      "subtype": "强弱差模型",
+      "match": "俄罗斯 vs 沙特阿拉伯"
+    },
+    {
+      "id": "review-austria-jordan",
+      "type": "review",
+      "section": "赛后复盘",
+      "title": "复盘：奥地利 vs 约旦 — 2026世界杯 J组第1轮",
+      "date": "2026-06-16",
+      "summary": "奥地利取胜+零封+低比分三大核心判断全部命中。1-0恰好落在第二备选（12%）。连续3场1-0不是偶然——它是朗尼克Gegenpressing体系下进攻效率的结构性特征。如果让\"模式一致性\"驱动主预测选择（1-0而非2-0），评分将达到…",
+      "file": "review-austria-jordan.md",
+      "tags": [
+        "赛后复盘",
+        "xG",
+        "世界杯"
+      ],
+      "stats": [
+        {
+          "label": "实际比分",
+          "value": "奥地利 1-0 约旦（第二备选·12%）"
+        },
+        {
+          "label": "胜平负",
+          "value": "奥地利胜"
+        },
+        {
+          "label": "大小球",
+          "value": "命中"
+        },
+        {
+          "label": "复盘评分",
+          "value": "7.5/10"
+        }
+      ],
+      "related": [
+        "prediction-austria-jordan",
+        "feature-blowout-analysis",
+        "feature-over-under-round-one",
+        "feature-group-round-one"
+      ],
+      "match": "奥地利 vs 约旦"
+    },
+    {
       "id": "prediction-iraq-norway",
       "type": "prediction",
       "section": "赛前预测",
@@ -349,6 +466,7 @@ window.SITE_DATA = {
         }
       ],
       "related": [
+        "review-austria-jordan",
         "feature-blowout-analysis",
         "feature-over-under-round-one",
         "feature-group-round-one"
@@ -437,17 +555,13 @@ window.SITE_DATA = {
       "section": "专题研究",
       "title": "2026 FIFA World Cup 战报 & 预测",
       "date": "2026-06-16",
-      "summary": "- 时间：2026年6月11日 – 7月19日 - 主办国：美国、加拿大、墨西哥（三国联办，史上首次） - 赛制：首次扩军至48队（12组×4队），每组前2 + 8个最佳第三名晋级32强 - 总场次：104场（从64场扩增） - 截至6…",
+      "summary": "- 时间：6月11日 → 7月19日 - 主办： 美国 · 加拿大 · 墨西哥（史上首次三国联办） - 赛制：48 队 → 12 组 × 4 队 → 前 2 + 最佳第三 8 → 32 强 - 总场次：104 场（上届 64） - 已赛…",
       "file": "feature-daily-brief-2026-06-16.md",
       "tags": [
         "进球趋势",
         "大比分"
       ],
       "stats": [
-        {
-          "label": ":--:",
-          "value": ":--"
-        },
         {
           "label": "1",
           "value": "墨西哥（H）"
@@ -459,15 +573,19 @@ window.SITE_DATA = {
         {
           "label": "3",
           "value": "捷克"
+        },
+        {
+          "label": "4",
+          "value": "南非"
         }
       ],
       "related": [
-        "feature-coach-analysis-groups-il",
-        "feature-coach-analysis-groups-eh",
-        "feature-coach-analysis-groups-ad"
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis",
+        "feature-coach-analysis-groups-il"
       ],
       "subtype": "赛程观察",
-      "match": "墨西哥 vs 南非"
+      "match": "法国 vs 塞内加尔"
     },
     {
       "id": "feature-coach-analysis-groups-il",
@@ -502,9 +620,9 @@ window.SITE_DATA = {
         }
       ],
       "related": [
-        "feature-daily-brief-2026-06-16",
-        "feature-coach-analysis-groups-eh",
-        "feature-coach-analysis-groups-ad"
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis",
+        "feature-daily-brief-2026-06-16"
       ],
       "subtype": "教练研究"
     },
@@ -540,9 +658,9 @@ window.SITE_DATA = {
         }
       ],
       "related": [
-        "feature-daily-brief-2026-06-16",
-        "feature-coach-analysis-groups-il",
-        "feature-coach-analysis-groups-ad"
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis",
+        "feature-daily-brief-2026-06-16"
       ],
       "subtype": "教练研究"
     },
@@ -579,89 +697,11 @@ window.SITE_DATA = {
         }
       ],
       "related": [
-        "feature-daily-brief-2026-06-16",
-        "feature-coach-analysis-groups-il",
-        "feature-coach-analysis-groups-eh"
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis",
+        "feature-daily-brief-2026-06-16"
       ],
       "subtype": "教练研究"
-    },
-    {
-      "id": "feature-wc2026-blowout-prediction",
-      "type": "feature",
-      "section": "专题研究",
-      "title": "2026 世界杯小组赛「大比分高概率场次」预测分析",
-      "date": "2026-06-16",
-      "summary": "2026 世界杯小组赛 72 场中，极高风险（≥70% 概率）的大比分场次约 6-7 场，高风险（40-70%）约 8-10 场。四支首秀球队（库拉索、佛得角、约旦、乌兹别克斯坦）+ 两支久违回归球队（海地、伊拉克）是主要\"受害者\"。",
-      "file": "feature-wc2026-blowout-prediction.md",
-      "tags": [
-        "小组赛",
-        "大比分"
-      ],
-      "stats": [
-        {
-          "label": "1",
-          "value": "FIFA 排名差 ≥ 30"
-        },
-        {
-          "label": "2",
-          "value": "弱队为世界杯新军"
-        },
-        {
-          "label": "3",
-          "value": "弱队久违参赛 / 经验严重不足"
-        },
-        {
-          "label": "4",
-          "value": "亚洲/非洲防线 vs 欧洲/南美顶级锋线"
-        }
-      ],
-      "related": [
-        "feature-daily-brief-2026-06-16",
-        "feature-coach-analysis-groups-il",
-        "feature-coach-analysis-groups-eh"
-      ],
-      "subtype": "大比分模型",
-      "match": "亚洲/非洲防线 vs 欧洲/南美顶级锋线"
-    },
-    {
-      "id": "feature-blowout-analysis",
-      "type": "feature",
-      "section": "专题研究",
-      "title": "2018 & 2022 世界杯「大比分比赛」特征深度分析报告",
-      "date": "2026-06-16",
-      "summary": "大比分比赛的三大支柱：实力断崖差 × 早期进球 × 心理崩溃",
-      "file": "feature-blowout-analysis.md",
-      "tags": [
-        "魔咒",
-        "进球趋势",
-        "小组赛",
-        "大比分"
-      ],
-      "stats": [
-        {
-          "label": "1",
-          "value": "小组赛 A 组"
-        },
-        {
-          "label": "2",
-          "value": "小组赛 G 组"
-        },
-        {
-          "label": "3",
-          "value": "小组赛 G 组"
-        },
-        {
-          "label": "4",
-          "value": "小组赛 B 组"
-        }
-      ],
-      "related": [
-        "feature-daily-brief-2026-06-16",
-        "feature-coach-analysis-groups-il",
-        "feature-coach-analysis-groups-eh"
-      ],
-      "subtype": "强弱差模型",
-      "match": "俄罗斯 vs 沙特阿拉伯"
     },
     {
       "id": "review-sweden-tunisia",
@@ -678,7 +718,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "实际比分",
-          "value": "瑞典 vs 突尼斯"
+          "value": "5-1"
         },
         {
           "label": "胜平负",
@@ -717,7 +757,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "实际比分",
-          "value": "伊朗 vs 新西兰"
+          "value": "2-2"
         },
         {
           "label": "胜平负",
@@ -756,7 +796,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "实际比分",
-          "value": "沙特阿拉伯 vs 乌拉圭"
+          "value": "1-1"
         },
         {
           "label": "胜平负",
@@ -794,7 +834,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "实际比分",
-          "value": "比利时 vs 埃及"
+          "value": "1-1"
         },
         {
           "label": "胜平负",
@@ -833,7 +873,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "实际比分",
-          "value": "西班牙 vs 佛得角"
+          "value": "0-0"
         },
         {
           "label": "胜平负",
@@ -1784,9 +1824,9 @@ window.SITE_DATA = {
         }
       ],
       "related": [
-        "feature-daily-brief-2026-06-16",
-        "feature-coach-analysis-groups-il",
-        "feature-coach-analysis-groups-eh"
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis",
+        "feature-daily-brief-2026-06-16"
       ],
       "subtype": "进球趋势",
       "match": "墨西哥 vs 南非"
@@ -1900,9 +1940,9 @@ window.SITE_DATA = {
         }
       ],
       "related": [
-        "feature-daily-brief-2026-06-16",
-        "feature-coach-analysis-groups-il",
-        "feature-coach-analysis-groups-eh"
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis",
+        "feature-daily-brief-2026-06-16"
       ],
       "subtype": "进球趋势",
       "match": "墨西哥 vs 南非"
@@ -1938,9 +1978,9 @@ window.SITE_DATA = {
         }
       ],
       "related": [
-        "feature-daily-brief-2026-06-16",
-        "feature-coach-analysis-groups-il",
-        "feature-coach-analysis-groups-eh"
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis",
+        "feature-daily-brief-2026-06-16"
       ],
       "subtype": "小组赛观察",
       "match": "墨西哥 vs 南非"
@@ -1976,9 +2016,9 @@ window.SITE_DATA = {
         }
       ],
       "related": [
-        "feature-daily-brief-2026-06-16",
-        "feature-coach-analysis-groups-il",
-        "feature-coach-analysis-groups-eh"
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis",
+        "feature-daily-brief-2026-06-16"
       ],
       "subtype": "魔咒与历史规律",
       "match": "西班牙 vs 法国"
@@ -2015,9 +2055,9 @@ window.SITE_DATA = {
         }
       ],
       "related": [
-        "feature-daily-brief-2026-06-16",
-        "feature-coach-analysis-groups-il",
-        "feature-coach-analysis-groups-eh"
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis",
+        "feature-daily-brief-2026-06-16"
       ],
       "subtype": "进球趋势",
       "match": "控球率、传控打法 vs 防守反击"

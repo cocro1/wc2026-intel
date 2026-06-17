@@ -430,12 +430,13 @@ function extractReviewStats(raw, match) {
   const actualScore = firstMatch(raw, [
     /实际比分[:：]\s*\**([^\n*]+)\**/u,
     /\|\s*\**(?:最终比分|实际比分)\**\s*\|\s*[^|]+\|\s*([^|]+)\|/u,
-    /\|\s*\**最终比分\**\s*\|\s*([^|]+)\|/u
+    /\|\s*\**最终比分\**\s*\|\s*([^|]+)\|/u,
+    /\|\s*比分\s*\|\s*[^|]+\|\s*([^|]+)\|/u
   ]);
   const outcome = firstMatch(raw, [
     /胜平负命中（[^）]+）\s*\|\s*([^\n|]+)/u,
     /\|\s*胜平负命中[^|]*\|\s*([^\|]+)\|/u,
-    /\|\s*(?:赛果|胜平负)\s*\|\s*[^|]+\|\s*([^|]+)\|/u
+    /\|\s*(?:赛果|胜平负|赛果方向)\s*\|\s*[^|]+\|\s*([^|]+)\|/u
   ]);
   const overUnder = firstMatch(raw, [
     /大小球[判断命中（][^|）]*[）]?\s*\|\s*([^\n|]+)/u,
@@ -443,6 +444,7 @@ function extractReviewStats(raw, match) {
     /\|\s*\**大小球\**\s*\|\s*[^|]+\|\s*([^|]+)\|/u
   ]);
   const reviewScore = firstMatch(raw, [
+    /整体评分[:：]\**\s*([0-9.]+\s*\/\s*10)\**/u,
     /综合评分[:：]\s*([0-9.]+\s*\/\s*10)/u,
     /复盘给分[:：]\s*([0-9.]+\s*\/\s*10)/u,
     /总体评价[:：].*?([0-9.]+\s*\/\s*10)/u
@@ -677,16 +679,31 @@ function buildModelStats(reviews) {
 
   for (const article of reviews) {
     const raw = article.markdown || "";
-    if (/\|\s*胜平负命中[^|]*\|\s*[^\n|]*✅/u.test(raw) || /\|\s*(?:赛果|胜平负)\s*\|[^\n|]+\|[^\n|]*✅/u.test(raw) || /\|\s*(?:赛果|胜平负)\s*\|[^\n|]+\|[^\n|]*命中/u.test(raw) || /方向[:：]\s*✅/u.test(raw)) {
+    if (
+      /\|\s*胜平负命中[^|]*\|\s*[^\n|]*✅/u.test(raw) ||
+      /\|\s*(?:赛果|胜平负|赛果方向)\s*\|[^\n|]+\|[^\n|]*✅/u.test(raw) ||
+      /\|\s*(?:赛果|胜平负|赛果方向)\s*\|[^\n|]+\|[^\n|]*命中/u.test(raw) ||
+      /方向[:：]\s*✅/u.test(raw) ||
+      /✅\s*赛果方向[:：]/u.test(raw)
+    ) {
       counters.outcome += 1;
     }
     if (/\|\s*比分命中[^|]*\|\s*[^\n|]*✅/u.test(raw) || /主推比分[:：]\s*✅/u.test(raw)) {
       counters.exact += 1;
     }
-    if (/\|\s*(?:备选比分覆盖|备选比分命中)[^|]*\|\s*[^\n|]*✅/u.test(raw) || /第 3 预测[:：]\s*✅/u.test(raw)) {
+    if (
+      /\|\s*(?:备选比分覆盖|备选比分命中)[^|]*\|\s*[^\n|]*✅/u.test(raw) ||
+      /第 3 预测[:：]\s*✅/u.test(raw) ||
+      /✅\s*比分备选命中[:：]/u.test(raw)
+    ) {
       counters.altScore += 1;
     }
-    if (/\|\s*大小球判断[^|]*\|\s*[^\n|]*✅/u.test(raw) || /\|\s*\**大小球\**\s*\|[^\n|]+\|[^\n|]*✅/u.test(raw) || /大小球[:：]\s*✅/u.test(raw)) {
+    if (
+      /\|\s*大小球判断[^|]*\|\s*[^\n|]*✅/u.test(raw) ||
+      /\|\s*\**大小球\**\s*\|[^\n|]+\|[^\n|]*✅/u.test(raw) ||
+      /大小球[:：]\s*✅/u.test(raw) ||
+      /小球命中\s*✅/u.test(raw)
+    ) {
       counters.overUnder += 1;
     }
   }
