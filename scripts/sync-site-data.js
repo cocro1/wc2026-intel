@@ -62,13 +62,18 @@ const FEATURE_OVERRIDES = {
     id: "feature-wc2026-blowout-prediction",
     file: "feature-wc2026-blowout-prediction.md",
     subtype: "大比分模型"
+  },
+  "2026_wc_round2_prediction.md": {
+    id: "feature-round2-matchday2-prediction",
+    file: "feature-round2-matchday2-prediction.md",
+    subtype: "赛程观察"
   }
 };
 
 const FEATURE_FALLBACKS = [
-  "feature-blowout-analysis",
-  "feature-over-under-round-one",
-  "feature-group-round-one"
+  "feature-round2-matchday2-prediction",
+  "feature-wc2026-blowout-prediction",
+  "feature-blowout-analysis"
 ];
 
 function main() {
@@ -76,7 +81,9 @@ function main() {
     .filter((name) => name.endsWith(".md"))
     .sort((a, b) => fileMtime(sourcePath(b)) - fileMtime(sourcePath(a)));
 
-  const existingAsciiFiles = new Set(fs.readdirSync(contentDir).filter((name) => /^[\x00-\x7F]+$/.test(name)));
+  const existingAsciiFiles = new Set(
+    fs.readdirSync(contentDir).filter((name) => /^[\x00-\x7F]+$/.test(name))
+  );
   const changedFiles = [];
   const newFiles = [];
 
@@ -118,38 +125,33 @@ function fileMtime(target) {
 
 function buildArticle(name) {
   const fullPath = sourcePath(name);
-  const raw = fs.readFileSync(fullPath, "utf8").replace(/\u0000/g, "");
-  const lines = raw.split(/\r?\n/);
+  const markdown = fs.readFileSync(fullPath, "utf8").replace(/\u0000/g, "");
+  const lines = markdown.split(/\r?\n/);
   const type = detectType(name);
-  const date = detectDate(name, raw);
+  const identity = buildIdentity(type, name);
   const title = cleanTitle(extractHeading(lines) || stripExtension(name));
-  const match = detectMatch(title, raw, name);
-  const meta = buildIdentity(type, name);
+  const date = detectDate(name, markdown);
+  const match = detectMatch(title, markdown, name, type);
+  const summary = extractSummary(markdown, type, match, title);
 
   const article = {
-    id: meta.id,
+    id: identity.id,
     type,
     section: sectionName(type),
     title,
     date,
-    summary: extractSummary(raw, type, match),
-    file: meta.file,
-    tags: extractTags(raw, type),
-    stats: extractStats(raw, type, match),
+    summary,
+    file: identity.file,
+    tags: extractTags(markdown, type),
+    stats: extractStats(markdown, type, match, summary),
     related: [],
     sourceName: name,
     sourceMtime: fs.statSync(fullPath).mtimeMs,
-    markdown: raw
+    markdown
   };
 
-  if (type === "feature" && meta.subtype) {
-    article.subtype = meta.subtype;
-  }
-
-  if (match) {
-    article.match = match;
-  }
-
+  if (identity.subtype) article.subtype = identity.subtype;
+  if (match) article.match = match;
   return article;
 }
 
@@ -178,17 +180,7 @@ function buildIdentity(type, name) {
   if (type === "prediction") {
     return { id: "prediction-" + slug, file: "prediction-" + slug + ".md" };
   }
-
   return { id: "review-" + slug, file: "review-" + slug + ".md" };
-}
-
-function slugify(input) {
-  return String(input)
-    .toLowerCase()
-    .replace(/&/g, " and ")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .replace(/-{2,}/g, "-");
 }
 
 function sectionName(type) {
@@ -203,24 +195,37 @@ function stripExtension(name) {
   return name.replace(/\.md$/i, "");
 }
 
+function slugify(input) {
+  return String(input)
+    .normalize("NFKD")
+    .replace(/[^\x00-\x7F]/g, " ")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .replace(/-{2,}/g, "-");
+}
+
 function extractHeading(lines) {
   const line = lines.find((item) => item.startsWith("# "));
   return line ? line.slice(2).trim() : "";
 }
 
-function cleanTitle(title) {
-  return title
-    .replace(/^[\p{Extended_Pictographic}\u2600-\u27BF\s]+/u, "")
+function cleanTitle(value) {
+  return String(value)
+    .replace(/^[\p{Extended_Pictographic}\u2600-\u27BF\s]+/gu, "")
     .replace(/\s+/g, " ")
     .trim();
 }
 
-function detectDate(name, raw) {
+function detectDate(name, markdown) {
   const fileMatch = name.match(/\d{4}-\d{2}-\d{2}/);
   if (fileMatch) return fileMatch[0];
-  const textMatch = raw.match(/20\d{2}-\d{2}-\d{2}/);
+
+  const textMatch = markdown.match(/20\d{2}-\d{2}-\d{2}/);
   if (textMatch) return textMatch[0];
-  const cnMatch = raw.match(/(20\d{2})年(\d{1,2})月(\d{1,2})日/);
+
+  const cnMatch = markdown.match(/(20\d{2})年(\d{1,2})月(\d{1,2})日/);
   if (cnMatch) {
     return [
       cnMatch[1],
@@ -228,36 +233,46 @@ function detectDate(name, raw) {
       cnMatch[3].padStart(2, "0")
     ].join("-");
   }
+
   return currentDate;
 }
 
-function detectMatch(title, raw, name) {
-  const titleSegments = title.split(/[·—:：|]/).map((item) => item.trim()).filter(Boolean);
-  for (const segment of titleSegments.reverse()) {
-    const hit = segment.match(/([A-Za-z\u4e00-\u9fff\- ]+?)\s+vs\s+([A-Za-z\u4e00-\u9fff\- ]+?)(?:[\s（(]|$)/i);
+function detectMatch(title, markdown, name, type) {
+  if (type === "feature") {
+    const hit = findFirstVs(textChunks(title, markdown));
+    return hit || "";
+  }
+
+  const hit = findFirstVs(textChunks(title, markdown));
+  if (hit) return hit;
+
+  const matchFromName = stripExtension(name)
+    .replace(/^review-/, "")
+    .replace(/^\d{4}-\d{2}-\d{2}-/, "")
+    .replace(/-prediction$/, "");
+  const pieces = matchFromName.split("-");
+  if (pieces.length >= 2) {
+    const mid = Math.floor(pieces.length / 2);
+    return cleanupInline(pieces.slice(0, mid).join(" ")) + " vs " + cleanupInline(pieces.slice(mid).join(" "));
+  }
+  return "";
+}
+
+function textChunks(title, markdown) {
+  const tableRows = markdown.split(/\r?\n/).filter((line) => /^\|/.test(line));
+  const rows = tableRows.map((row) => splitTableRow(row).join(" "));
+  const quoted = markdown.match(/>\s*(.+)/g) || [];
+  return [title, ...rows, ...quoted];
+}
+
+function findFirstVs(chunks) {
+  for (const chunk of chunks) {
+    const hit = chunk.match(/([A-Za-z\u4e00-\u9fff().\- ]+?)\s+vs\s+([A-Za-z\u4e00-\u9fff().\- ]+?)(?:\s|$|\||，|。)/i);
     if (hit) {
       return normalizeMatch(hit[1], hit[2]);
     }
   }
-
-  const quoteMatch = raw.match(/>\s*([A-Za-z\u4e00-\u9fff·\- ]+?)\s+vs\s+([A-Za-z\u4e00-\u9fff·\- ]+?)\s*[·|｜]/i);
-  if (quoteMatch) {
-    return normalizeMatch(quoteMatch[1], quoteMatch[2]);
-  }
-
-  const row = raw.split(/\r?\n/).find((line) => /^\|/.test(line) && /vs/i.test(line));
-  if (row) {
-    const cells = splitTableRow(row);
-    const hit = cells.find((cell) => /\bvs\b/i.test(cell));
-    if (hit) {
-      const parts = hit.split(/\bvs\b/i);
-      if (parts.length === 2) return normalizeMatch(parts[0], parts[1]);
-    }
-  }
-
-  const fileMatch = name.match(/(?:review-\d{4}-\d{2}-\d{2}-|^\d{4}-\d{2}-\d{2}-)?([a-z0-9-]+)-([a-z0-9-]+)-(?:prediction)?/i);
-  if (!fileMatch) return "";
-  return fileMatch[1].replace(/-/g, " ") + " vs " + fileMatch[2].replace(/-/g, " ");
+  return "";
 }
 
 function normalizeMatch(home, away) {
@@ -267,208 +282,193 @@ function normalizeMatch(home, away) {
 function cleanupInline(text) {
   return String(text)
     .replace(/[\p{Extended_Pictographic}\u2600-\u27BF]/gu, "")
-    .replace(/[🇦-🇿]/gu, "")
-    .replace(/[`*_]/g, "")
+    .replace(/[`*_>#]/g, "")
     .replace(/\s+/g, " ")
     .trim();
 }
 
-function extractSummary(raw, type, match) {
-  const summaryKeys = {
-    prediction: ["一句话结论", "核心预测结论", "最终结论", "核心结论", "预测结论"],
-    review: ["最终结论", "核心结论"],
-    feature: ["核心摘要", "执行摘要", "核心结论"]
-  }[type];
-
-  const sectionSummary = findParagraphAfterHeading(raw, summaryKeys);
-  if (sectionSummary) return clipSummary(sectionSummary);
-
-  const paragraphs = raw
+function extractSummary(markdown, type, match, title) {
+  const sections = markdown
     .split(/\r?\n\r?\n/)
-    .map((item) => item.trim())
-    .filter((item) => item && item !== "---" && !item.startsWith("#") && !item.startsWith(">") && !item.startsWith("|"));
+    .map((item) => cleanupInline(item))
+    .filter((item) => item && !item.startsWith("#") && !item.startsWith("|"));
 
-  if (paragraphs.length) return clipSummary(paragraphs[0]);
-  if (match) return clipSummary(match + " 相关内容已同步。");
-  return "世界杯研究内容已同步到站点。";
+  const bullets = markdown
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => /^[-*]\s+/.test(line) || /^\d+\.\s+/.test(line))
+    .map((line) => cleanupInline(line.replace(/^[-*]\s+/, "").replace(/^\d+\.\s+/, "")));
+
+  const preferred = [...bullets, ...sections].find((item) => item.length > 12 && !/Disclaimer/i.test(item));
+  if (preferred) return clipSummary(preferred);
+  if (match) return clipSummary(match + " 相关内容已同步到站点。");
+  return clipSummary(title);
 }
 
 function clipSummary(text) {
-  const clean = cleanupInline(text).replace(/\s+/g, " ").trim();
-  if (clean.length <= 120) return clean;
-  return clean.slice(0, 118).trimEnd() + "…";
+  const clean = cleanupInline(text);
+  if (clean.length <= 140) return clean;
+  return clean.slice(0, 137).trimEnd() + "...";
 }
 
-function findParagraphAfterHeading(raw, headingKeywords) {
-  const lines = raw.split(/\r?\n/);
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i].trim();
-    if (!/^##+ /.test(line)) continue;
-    if (!headingKeywords.some((keyword) => line.includes(keyword))) continue;
-
-    const bucket = [];
-    const bullets = [];
-    for (let j = i + 1; j < lines.length; j += 1) {
-      const next = lines[j].trim();
-      if (/^##+ /.test(next)) break;
-      if (!next || next === "---") {
-        if (bucket.length) break;
-        continue;
-      }
-      if (/^\|/.test(next)) {
-        if (bucket.length) break;
-        continue;
-      }
-      if (/^[-*]\s+/.test(next) || /^\d+\.\s+/.test(next)) {
-        bullets.push(next.replace(/^[-*]\s+/, "").replace(/^\d+\.\s+/, ""));
-        if (bucket.length) break;
-        continue;
-      }
-      bucket.push(next.replace(/^>\s?/, ""));
-    }
-    if (bucket.length) return bucket.join(" ");
-    if (bullets.length) return bullets[0];
-  }
-  return "";
-}
-
-function extractTags(raw, type) {
-  if (type === "feature") {
-    const tags = [];
-    if (raw.includes("魔咒")) tags.push("魔咒");
-    if (raw.includes("进球")) tags.push("进球趋势");
-    if (raw.includes("小组赛")) tags.push("小组赛");
-    if (raw.includes("大比分")) tags.push("大比分");
-    return unique(tags).slice(0, 4);
-  }
-
+function extractTags(markdown, type) {
   const tags = [];
   if (type === "prediction") tags.push("赛前预测");
   if (type === "review") tags.push("赛后复盘");
-  if (raw.includes("xG")) tags.push("xG");
-  if (raw.includes("世界杯")) tags.push("世界杯");
-  return unique(tags);
+  if (type === "feature") tags.push("专题研究");
+  if (/xG/i.test(markdown)) tags.push("xG");
+  if (/世界杯|World Cup/i.test(markdown)) tags.push("世界杯");
+  if (/大比分|blowout/i.test(markdown)) tags.push("大比分");
+  if (/进球|goal/i.test(markdown)) tags.push("进球趋势");
+  return unique(tags).slice(0, 4);
 }
 
-function extractStats(raw, type, match) {
-  if (type === "prediction") return extractPredictionStats(raw, match);
-  if (type === "review") return extractReviewStats(raw, match);
-  return extractFeatureStats(raw);
+function extractStats(markdown, type, match, summary) {
+  if (type === "prediction") return extractPredictionStats(markdown, match, summary);
+  if (type === "review") return extractReviewStats(markdown, match);
+  return extractFeatureStats(markdown);
 }
 
-function extractPredictionStats(raw, match) {
-  const probabilities = extractPredictionProbabilities(raw, match);
-  const score = firstMatch(raw, [
-    /最可能比分[^：:\n]*[:：]\s*\**([^*\n|]+)\**/u,
-    /最终结论[\s\S]{0,240}?\*\*([^*\n]*\d+\s*-\s*\d+[^*\n]*)\*\*/u,
-    /预测结论[\s\S]{0,240}?\*\*([^*\n]*\d+\s*-\s*\d+[^*\n]*)\*\*/u,
-    /\|\s*(?:预测比分|最可能比分)\s*\|\s*([^|]+)\|/u
-  ]);
-  const totalGoals = firstMatch(raw, [
-    /总进球[^：:\n]*[:：]\s*([^\n]+)/u,
-    /\|\s*(?:总进球|总 xG区间|预计总xG区间)\s*\|\s*([^|]+)\|/u
-  ]);
-  const confidence = firstMatch(raw, [
-    /置信度\s*\|\s*\**([^\n|*]+)\**/u,
-    /置信度[^：:\n]*[:：]\s*([^\n*]+)/u,
-    /概率置信度梯级[:：]\s*([^\n]+)/u
-  ]) || "中";
+function extractPredictionStats(markdown, match, summary) {
+  const probs = extractProbabilityTriplet(markdown, match);
+  const score = extractFirstScoreLine(markdown, summary);
+  const totalGoals = extractTotalGoals(markdown);
+  const confidence = extractConfidence(markdown);
 
   return [
-    { label: "预测比分", value: cleanupInline(score || "待补充") },
-    { label: "胜平负", value: probabilities.length ? probabilities.map((item) => item.value).join("/") : "待补充" },
-    { label: "总进球", value: cleanupInline(totalGoals || "待补充") },
-    { label: "置信度", value: cleanupInline(confidence || "中") }
+    { label: "预测比分", value: score || "待补充" },
+    { label: "胜平负", value: probs.length ? probs.map((item) => item.value).join("/") : "待补充" },
+    { label: "总进球", value: totalGoals || "待补充" },
+    { label: "置信度", value: confidence || "中" }
   ];
 }
 
-function extractPredictionProbabilities(raw, match) {
-  const sections = ["概率预测", "胜/平/负概率", "AI预测与市场赔率分析", "综合预测"];
-  for (const section of sections) {
-    const sectionText = extractSection(raw, section);
-    const parsed = parseProbabilityRows(sectionText, match);
-    if (parsed.length >= 3) return parsed.slice(0, 3);
-  }
-  return [];
-}
-
-function parseProbabilityRows(sectionText, match) {
-  if (!sectionText) return [];
-  const rows = sectionText.split(/\r?\n/).filter((line) => /^\|/.test(line));
-  const parsed = [];
+function extractProbabilityTriplet(markdown, match) {
+  const rows = markdown.split(/\r?\n/).filter((line) => /^\|/.test(line) && /%/.test(line));
+  const items = [];
 
   for (const row of rows) {
-    if (/---/.test(row)) continue;
     const cells = splitTableRow(row);
-    const labelCell = cells[0] || "";
-    const percentCell = cells.find((cell) => /\d{1,3}(?:\.\d+)?%/.test(cell));
-    if (!percentCell) continue;
-    const value = Number((percentCell.match(/\d{1,3}(?:\.\d+)?/) || [])[0]);
+    if (cells.length < 2) continue;
+    const pct = cells.find((cell) => /\d{1,3}(?:\.\d+)?%/.test(cell));
+    if (!pct) continue;
+    const value = Number((pct.match(/\d{1,3}(?:\.\d+)?/) || [])[0]);
     if (!Number.isFinite(value)) continue;
-    parsed.push({
-      label: probabilityLabel(labelCell, match, parsed.length),
+    items.push({
+      label: probabilityLabel(cleanupInline(cells[0]), match, items.length),
       value,
-      tone: parsed.length === 0 ? "green" : parsed.length === 1 ? "gold" : "red"
+      tone: items.length === 0 ? "green" : items.length === 1 ? "gold" : "red"
     });
+    if (items.length === 3) break;
   }
 
-  return parsed;
+  return items;
 }
 
 function probabilityLabel(label, match, index) {
-  const clean = cleanupInline(label);
-  if (clean.includes("平")) return "平局";
+  if (/平|draw/i.test(label)) return "平局";
   if (match) {
     const [home, away] = match.split(/\s+vs\s+/i);
-    if (clean.includes(home)) return home + "胜";
-    if (clean.includes(away)) return away + "胜";
+    if (label.includes(home)) return home + "胜";
+    if (label.includes(away)) return away + "胜";
   }
-  return ["主胜", "平局", "客胜"][index] || clean || "结果";
+  return ["主胜", "平局", "客胜"][index] || label || "结果";
 }
 
-function extractReviewStats(raw, match) {
-  const actualScore = firstMatch(raw, [
+function extractFirstScoreLine(markdown, fallback) {
+  const scoreMatch = markdown.match(/\b\d+\s*-\s*\d+\b/);
+  if (scoreMatch) return scoreMatch[0];
+  return cleanupInline(fallback || "");
+}
+
+function extractTotalGoals(markdown) {
+  const line = markdown.split(/\r?\n/).find((item) => /总进球|xG区间|进球区间/i.test(item));
+  return line ? cleanupInline(line) : "";
+}
+
+function extractConfidence(markdown) {
+  const line = markdown.split(/\r?\n/).find((item) => /置信度|confidence/i.test(item));
+  if (!line) return "";
+  if (/极低|very low/i.test(line)) return "极低";
+  if (/低|low/i.test(line)) return "低";
+  if (/中|medium/i.test(line)) return "中";
+  if (/高|high/i.test(line)) return "高";
+  return cleanupInline(line);
+}
+
+function extractReviewStats(markdown, match) {
+  const reviewRows = parseReviewRows(markdown);
+  const scoreRow = reviewRows[0];
+  const actualScore = firstMatch(markdown, [
     /实际比分[:：]\s*\**([^\n*]+)\**/u,
     /\|\s*\**(?:最终比分|实际比分)\**\s*\|\s*[^|]+\|\s*([^|]+)\|/u,
     /\|\s*\**最终比分\**\s*\|\s*([^|]+)\|/u,
     /\|\s*比分\s*\|\s*[^|]+\|\s*([^|]+)\|/u
-  ]);
-  const outcome = firstMatch(raw, [
+  ]) || (scoreRow ? scoreRow.actual : match || "待补充");
+  const outcome = firstMatch(markdown, [
     /胜平负命中（[^）]+）\s*\|\s*([^\n|]+)/u,
     /\|\s*胜平负命中[^|]*\|\s*([^\|]+)\|/u,
     /\|\s*(?:赛果|胜平负|赛果方向)\s*\|\s*[^|]+\|\s*([^|]+)\|/u
-  ]);
-  const overUnder = firstMatch(raw, [
-    /大小球[判断命中（][^|）]*[）]?\s*\|\s*([^\n|]+)/u,
+  ]) || (scoreRow ? scoreRow.judgement : "");
+  const overUnder = firstMatch(markdown, [
+    /大小球[^：|\n]*[:：]\s*([^\n]+)/u,
     /\|\s*大小球判断[^|]*\|\s*([^\|]+)\|/u,
     /\|\s*\**大小球\**\s*\|\s*[^|]+\|\s*([^|]+)\|/u
-  ]);
-  const reviewScore = firstMatch(raw, [
-    /整体评分[:：]\**\s*([0-9.]+\s*\/\s*10)\**/u,
+  ]) || findOverUnderJudgement(reviewRows, markdown);
+  const overallScore = firstMatch(markdown, [
+    /整体评分[:：]\s*\**([0-9.]+\s*\/\s*10)\**/u,
     /综合评分[:：]\s*([0-9.]+\s*\/\s*10)/u,
     /复盘给分[:：]\s*([0-9.]+\s*\/\s*10)/u,
     /总体评价[:：].*?([0-9.]+\s*\/\s*10)/u
-  ]) || "待补充";
+  ]) || extractOverallReviewScore(markdown);
 
   return [
-    { label: "实际比分", value: cleanupInline(actualScore || match || "待补充") },
+    { label: "实际比分", value: cleanupInline(actualScore) },
     { label: "胜平负", value: normalizeHitLabel(outcome) },
     { label: "大小球", value: normalizeHitLabel(overUnder) },
-    { label: "复盘评分", value: cleanupInline(reviewScore) }
+    { label: "复盘评分", value: overallScore }
   ];
+}
+
+function parseReviewRows(markdown) {
+  return markdown
+    .split(/\r?\n/)
+    .filter((line) => /^\|/.test(line) && !/---/.test(line))
+    .map((line) => splitTableRow(line))
+    .slice(1)
+    .filter((cells) => cells.length >= 4)
+    .map((cells) => ({
+      label: cleanupInline(cells[0]),
+      predicted: cleanupInline(cells[1]),
+      actual: cleanupInline(cells[2]),
+      judgement: cleanupInline(cells[3])
+    }));
+}
+
+function extractOverallReviewScore(markdown) {
+  const matches = markdown.match(/[0-9.]+\s*\/\s*10/g);
+  if (!matches || !matches.length) return "待补充";
+  return matches[matches.length - 1];
+}
+
+function findOverUnderJudgement(reviewRows, markdown) {
+  const row = reviewRows.find((item) => /大小|total|xg/i.test(`${item.label} ${item.predicted} ${item.actual}`));
+  if (row) return row.judgement;
+  const line = markdown.split(/\r?\n/).find((item) => /大小球|大球|小球/i.test(item));
+  return line ? cleanupInline(line) : "";
 }
 
 function normalizeHitLabel(value) {
   const clean = cleanupInline(value || "");
   if (!clean) return "待补充";
-  if (clean.includes("✅") || clean.includes("命中") || clean.includes("方向对")) return "命中";
-  if (clean.includes("⚠️") || clean.includes("部分")) return "部分命中";
-  if (clean.includes("❌") || clean.includes("未")) return "未中";
+  if (/[✅✔]/u.test(clean) || /hit|命中|正确/i.test(clean)) return "命中";
+  if (/[⚠]/u.test(clean) || /partial|部分|方向正确/i.test(clean)) return "部分命中";
+  if (/[❌✘]/u.test(clean) || /miss|错误|未中/i.test(clean)) return "未中";
   return clean;
 }
 
-function extractFeatureStats(raw) {
-  const rows = raw.split(/\r?\n/).filter((line) => /^\|/.test(line) && !/---/.test(line)).slice(0, 5);
+function extractFeatureStats(markdown) {
+  const rows = markdown.split(/\r?\n/).filter((line) => /^\|/.test(line) && !/---/.test(line));
   const stats = [];
   for (const row of rows.slice(1)) {
     const cells = splitTableRow(row);
@@ -482,36 +482,13 @@ function extractFeatureStats(raw) {
   return stats;
 }
 
-function extractSection(raw, headingKeyword) {
-  const lines = raw.split(/\r?\n/);
-  let collecting = false;
-  const bucket = [];
-
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (/^##+ /.test(trimmed)) {
-      if (collecting) break;
-      if (trimmed.includes(headingKeyword)) {
-        collecting = true;
-      }
-      continue;
-    }
-    if (collecting) bucket.push(line);
-  }
-
-  return bucket.join("\n");
-}
-
 function splitTableRow(row) {
-  return row.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim());
-}
-
-function firstMatch(text, patterns) {
-  for (const pattern of patterns) {
-    const matched = text.match(pattern);
-    if (matched && matched[1]) return matched[1].trim();
-  }
-  return "";
+  return row
+    .trim()
+    .replace(/^\|/, "")
+    .replace(/\|$/, "")
+    .split("|")
+    .map((cell) => cell.trim());
 }
 
 function unique(items) {
@@ -519,29 +496,25 @@ function unique(items) {
 }
 
 function attachRelated(articles) {
-  const articleMap = new Map(articles.map((article) => [article.id, article]));
+  const byId = new Map(articles.map((article) => [article.id, article]));
   const features = articles.filter((article) => article.type === "feature");
-  const latestFeatures = FEATURE_FALLBACKS
-    .map((id) => articleMap.get(id))
-    .filter(Boolean);
+  const fallbackFeatures = FEATURE_FALLBACKS.map((id) => byId.get(id)).filter(Boolean);
 
   for (const article of articles) {
     const related = [];
-    const counterpartId = article.type === "prediction"
-      ? article.id.replace(/^prediction-/, "review-")
-      : article.type === "review"
-        ? article.id.replace(/^review-/, "prediction-")
-        : "";
-    if (counterpartId && articleMap.has(counterpartId)) {
-      related.push(counterpartId);
+    if (article.type === "prediction") {
+      const reviewId = article.id.replace(/^prediction-/, "review-");
+      if (byId.has(reviewId)) related.push(reviewId);
     }
-
+    if (article.type === "review") {
+      const predictionId = article.id.replace(/^review-/, "prediction-");
+      if (byId.has(predictionId)) related.push(predictionId);
+    }
     if (article.type === "feature") {
       related.push(...features.filter((item) => item.id !== article.id).slice(0, 3).map((item) => item.id));
     } else {
-      related.push(...latestFeatures.map((item) => item.id));
+      related.push(...fallbackFeatures.map((item) => item.id));
     }
-
     article.related = unique(related).slice(0, 4);
   }
 }
@@ -550,50 +523,44 @@ function buildSiteData(articles) {
   const predictions = articles.filter((article) => article.type === "prediction");
   const reviews = articles.filter((article) => article.type === "review");
   const features = articles.filter((article) => article.type === "feature");
-  const todayCandidates = predictions
-    .filter((article) => article.date === currentDate)
-    .sort((a, b) => b.sourceMtime - a.sourceMtime);
-  const today = todayCandidates[0] || predictions[0] || { stats: [] };
-  const reviewCards = reviews.slice(0, 2).map((article) => ({
-    label: "最新复盘",
-    match: article.match || article.title,
-    result: article.stats.find((stat) => stat.label === "实际比分")?.value || article.date,
-    note: article.summary,
-    articleId: article.id
-  }));
-
+  const today = predictions.find((article) => article.date === currentDate) || predictions[0] || { stats: [] };
   const model = buildModelStats(reviews);
-  const metrics = [
-    {
-      label: "站内文章",
-      value: String(articles.length),
-      note: "四大板块统一索引，按时间倒序更新"
-    },
-    {
-      label: "已复盘场次",
-      value: String(reviews.length),
-      note: "复盘样本扩大后，模型判断更可校准"
-    },
-    {
-      label: "胜平负命中",
-      value: percent(model[0].value, model[0].total),
-      note: `${model[0].value}/${model[0].total}，先看方向稳定性`
-    },
-    {
-      label: "复盘评分",
-      value: averageReviewScore(reviews),
-      note: "根据复盘文中的自评分动态更新"
-    }
-  ];
 
   return {
     updatedAt: formatTimestamp(new Date()),
     dashboard: {
       headline: "2026 世界杯预测、复盘与专题研究中枢",
-      subtitle: "把赛前判断、赛后校准、专题模型和趋势信号放进同一套静态结构里，方便日更追踪。",
+      subtitle: "把赛前判断、赛后校准、模型战绩和趋势信号放进同一套静态结构里，方便持续更新。",
       today: buildTodayCard(today),
-      reviewCards,
-      metrics,
+      reviewCards: reviews.slice(0, 2).map((article) => ({
+        label: "最新复盘",
+        match: article.match || article.title,
+        result: statValue(article, "实际比分", article.date),
+        note: article.summary,
+        articleId: article.id
+      })),
+      metrics: [
+        {
+          label: "站内文章",
+          value: String(articles.length),
+          note: "四大板块统一索引，按时间倒序更新"
+        },
+        {
+          label: "已复盘场次",
+          value: String(reviews.length),
+          note: "复盘样本继续累积，模型判断持续校准"
+        },
+        {
+          label: "胜平负命中",
+          value: percent(model[0].value, model[0].total),
+          note: `${model[0].value}/${model[0].total}，先看方向稳定性`
+        },
+        {
+          label: "复盘评分",
+          value: averageReviewScore(reviews),
+          note: "按复盘文中的总体评分动态更新"
+        }
+      ],
       model,
       signals: buildSignals(today, reviews, features, predictions),
       workflow: [
@@ -608,37 +575,31 @@ function buildSiteData(articles) {
 }
 
 function buildTodayCard(article) {
-  const probabilities = extractPredictionProbabilities(article.markdown || "", article.match);
-  const scoreStat = article.stats.find((stat) => stat.label === "预测比分")?.value || article.summary;
-  const confidence = article.stats.find((stat) => stat.label === "置信度")?.value || "中";
-  const reasons = extractReasons(article.markdown || "", article.summary);
+  const probabilities = extractProbabilityTriplet(article.markdown || "", article.match);
   return {
     title: "今日主推",
-    match: article.match || article.title,
+    match: article.match || article.title || "暂无",
     time: article.date || currentDate,
-    score: scoreStat,
-    confidence,
+    score: statValue(article, "预测比分", article.summary || "待补充"),
+    confidence: statValue(article, "置信度", "中"),
     probabilities: probabilities.length ? probabilities : [
       { label: "主胜", value: 50, tone: "green" },
       { label: "平局", value: 28, tone: "gold" },
       { label: "客胜", value: 22, tone: "red" }
     ],
-    reasons,
-    articleId: article.id
+    reasons: extractReasons(article.markdown || "", article.summary || ""),
+    articleId: article.id || ""
   };
 }
 
-function extractReasons(raw, fallback) {
-  const section = extractSection(raw, "预测逻辑") || extractSection(raw, "关键假设");
-  const items = section
+function extractReasons(markdown, fallback) {
+  const items = markdown
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter((line) => /^[-*]\s+/.test(line) || /^\d+\.\s+/.test(line))
     .map((line) => cleanupInline(line.replace(/^[-*]\s+/, "").replace(/^\d+\.\s+/, "")));
   if (items.length >= 3) return items.slice(0, 3);
-
-  const sentences = cleanupInline(fallback).split(/(?<=[。！？])/).map((item) => item.trim()).filter(Boolean);
-  return sentences.slice(0, 3);
+  return clipSummary(fallback).split(/[。.!?]/).map((item) => item.trim()).filter(Boolean).slice(0, 3);
 }
 
 function buildSignals(today, reviews, features, predictions) {
@@ -648,8 +609,8 @@ function buildSignals(today, reviews, features, predictions) {
   return [
     {
       label: "今日主推",
-      value: today.match || today.title,
-      note: today.summary || "当天主推预测已同步"
+      value: today.match || today.title || "暂无",
+      note: today.summary || "当天重点预测已同步"
     },
     {
       label: "最新专题",
@@ -664,7 +625,7 @@ function buildSignals(today, reviews, features, predictions) {
     {
       label: "预测储备",
       value: `${futureCount} 场`,
-      note: "已提前写入后续赛程的赛前预测"
+      note: "已写入后续赛程的赛前预测"
     }
   ];
 }
@@ -679,41 +640,55 @@ function buildModelStats(reviews) {
 
   for (const article of reviews) {
     const raw = article.markdown || "";
-    if (
+    const rows = parseReviewRows(raw);
+    const scoreRow = rows[0];
+    const altScoreRow = rows.find((row) => /备选|alternate/i.test(row.label));
+    const overUnder = findOverUnderJudgement(rows, raw);
+    const outcomeHit =
       /\|\s*胜平负命中[^|]*\|\s*[^\n|]*✅/u.test(raw) ||
-      /\|\s*(?:赛果|胜平负|赛果方向)\s*\|[^\n|]+\|[^\n|]*✅/u.test(raw) ||
-      /\|\s*(?:赛果|胜平负|赛果方向)\s*\|[^\n|]+\|[^\n|]*命中/u.test(raw) ||
+      /\|\s*(?:赛果|胜平负|赛果方向)\s*\|[^\n|]+\|[^\n|]*(?:✅|命中)/u.test(raw) ||
       /方向[:：]\s*✅/u.test(raw) ||
-      /✅\s*赛果方向[:：]/u.test(raw)
-    ) {
-      counters.outcome += 1;
-    }
-    if (/\|\s*比分命中[^|]*\|\s*[^\n|]*✅/u.test(raw) || /主推比分[:：]\s*✅/u.test(raw)) {
-      counters.exact += 1;
-    }
-    if (
+      /✅\s*赛果方向[:：]/u.test(raw) ||
+      (scoreRow && /命中|部分命中|方向正确/.test(normalizeHitLabel(scoreRow.judgement)));
+    if (outcomeHit) counters.outcome += 1;
+
+    const exactHit =
+      /\|\s*比分命中[^|]*\|\s*[^\n|]*✅/u.test(raw) ||
+      /主推比分[:：]\s*✅/u.test(raw) ||
+      (scoreRow && normalizeHitLabel(scoreRow.judgement) === "命中" && scoreRow.predicted && scoreRow.actual && scoreRow.predicted.includes(scoreRow.actual));
+    if (exactHit) counters.exact += 1;
+
+    const altScoreHit =
       /\|\s*(?:备选比分覆盖|备选比分命中)[^|]*\|\s*[^\n|]*✅/u.test(raw) ||
       /第 3 预测[:：]\s*✅/u.test(raw) ||
-      /✅\s*比分备选命中[:：]/u.test(raw)
-    ) {
-      counters.altScore += 1;
-    }
-    if (
+      /✅\s*比分备选命中[:：]/u.test(raw) ||
+      (altScoreRow && normalizeHitLabel(altScoreRow.judgement) === "命中");
+    if (altScoreHit) counters.altScore += 1;
+
+    const overUnderHit =
       /\|\s*大小球判断[^|]*\|\s*[^\n|]*✅/u.test(raw) ||
       /\|\s*\**大小球\**\s*\|[^\n|]+\|[^\n|]*✅/u.test(raw) ||
       /大小球[:：]\s*✅/u.test(raw) ||
-      /小球命中\s*✅/u.test(raw)
-    ) {
-      counters.overUnder += 1;
-    }
+      /小球命中\s*✅/u.test(raw) ||
+      normalizeHitLabel(overUnder) === "命中";
+    if (overUnderHit) counters.overUnder += 1;
   }
 
   return [
-    { label: "胜平负命中", value: counters.outcome, total: reviews.length, tone: gaugeTone(counters.outcome, reviews.length) },
-    { label: "精确比分命中", value: counters.exact, total: reviews.length, tone: gaugeTone(counters.exact, reviews.length) },
-    { label: "备选比分覆盖", value: counters.altScore, total: reviews.length, tone: gaugeTone(counters.altScore, reviews.length) },
-    { label: "大小球命中", value: counters.overUnder, total: reviews.length, tone: gaugeTone(counters.overUnder, reviews.length) }
+    gaugeStat("胜平负命中", counters.outcome, reviews.length),
+    gaugeStat("精确比分命中", counters.exact, reviews.length),
+    gaugeStat("备选比分覆盖", counters.altScore, reviews.length),
+    gaugeStat("大小球命中", counters.overUnder, reviews.length)
   ];
+}
+
+function gaugeStat(label, value, total) {
+  return {
+    label,
+    value,
+    total,
+    tone: gaugeTone(value, total)
+  };
 }
 
 function gaugeTone(value, total) {
@@ -732,13 +707,13 @@ function averageReviewScore(reviews) {
   const values = reviews
     .map((article) => {
       const stat = article.stats.find((item) => item.label === "复盘评分");
-      const matched = stat && stat.value.match(/[0-9.]+/);
-      return matched ? Number(matched[0]) : NaN;
+      const match = stat && stat.value.match(/[0-9.]+/);
+      return match ? Number(match[0]) : NaN;
     })
     .filter((value) => Number.isFinite(value));
+
   if (!values.length) return "暂无";
-  const avg = values.reduce((sum, value) => sum + value, 0) / values.length;
-  return avg.toFixed(1);
+  return (values.reduce((sum, value) => sum + value, 0) / values.length).toFixed(1);
 }
 
 function stripInternalFields(article) {
@@ -754,10 +729,22 @@ function stripInternalFields(article) {
     stats: article.stats,
     related: article.related
   };
-
   if (article.subtype) output.subtype = article.subtype;
   if (article.match) output.match = article.match;
   return output;
+}
+
+function statValue(article, label, fallback) {
+  const stat = (article.stats || []).find((item) => item.label === label);
+  return stat ? stat.value : fallback;
+}
+
+function firstMatch(text, patterns) {
+  for (const pattern of patterns) {
+    const matched = text.match(pattern);
+    if (matched && matched[1]) return cleanupInline(matched[1]);
+  }
+  return "";
 }
 
 function sortArticles(a, b) {
@@ -782,11 +769,9 @@ function formatTimestamp(date) {
 function syncContent(article, existingAsciiFiles, changedFiles, newFiles) {
   const target = path.join(contentDir, article.file);
   const changed = writeIfChanged(target, article.markdown.endsWith("\n") ? article.markdown : article.markdown + "\n");
-  if (changed && existingAsciiFiles.has(article.file)) {
-    changedFiles.push(article.file);
-  } else if (changed) {
-    newFiles.push(article.file);
-  }
+  if (!changed) return;
+  if (existingAsciiFiles.has(article.file)) changedFiles.push(article.file);
+  else newFiles.push(article.file);
 }
 
 function writeIfChanged(target, text) {
