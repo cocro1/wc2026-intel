@@ -344,6 +344,9 @@ function extractPredictionStats(markdown, match, summary) {
 }
 
 function extractProbabilityTriplet(markdown, match) {
+  const inline = extractInlineProbabilities(markdown, match);
+  if (inline.length) return inline;
+
   const rows = markdown.split(/\r?\n/).filter((line) => /^\|/.test(line) && /%/.test(line));
   const items = [];
 
@@ -365,6 +368,34 @@ function extractProbabilityTriplet(markdown, match) {
   return items;
 }
 
+function extractInlineProbabilities(markdown, match) {
+  const line = markdown
+    .split(/\r?\n/)
+    .map((item) => cleanupInline(item))
+    .find((item) => /胜率分布|概率分布/i.test(item) && /%/.test(item));
+  if (!line) return [];
+
+  const values = Array.from(line.matchAll(/(\d{1,3}(?:\.\d+)?)%/g))
+    .map((matched) => Number(matched[1]))
+    .filter((value) => Number.isFinite(value))
+    .slice(0, 3);
+  if (values.length < 3) return [];
+
+  const labels = [];
+  if (match) {
+    const [home, away] = match.split(/\s+vs\s+/i);
+    if (home) labels.push(home + "胜");
+    labels.push("平局");
+    if (away) labels.push(away + "胜");
+  }
+
+  return values.map((value, index) => ({
+    label: labels[index] || ["主胜", "平局", "客胜"][index] || "结果",
+    value,
+    tone: index === 0 ? "green" : index === 1 ? "gold" : "red"
+  }));
+}
+
 function probabilityLabel(label, match, index) {
   if (/平|draw/i.test(label)) return "平局";
   if (match) {
@@ -376,7 +407,16 @@ function probabilityLabel(label, match, index) {
 }
 
 function extractFirstScoreLine(markdown, fallback) {
-  const scoreMatch = markdown.match(/\b\d+\s*-\s*\d+\b/);
+  const labelledLine = markdown
+    .split(/\r?\n/)
+    .map((item) => cleanupInline(item))
+    .find((item) => /最可能比分|预测比分|比分预测/i.test(item) && /\d+\s*-\s*\d+/.test(item));
+  if (labelledLine) {
+    const labelledMatch = labelledLine.match(/\d+\s*-\s*\d+/);
+    if (labelledMatch) return labelledMatch[0];
+  }
+
+  const scoreMatch = markdown.match(/(?<!\d{4})\b\d+\s*-\s*\d+\b(?!-\d{2})/);
   if (scoreMatch) return scoreMatch[0];
   return cleanupInline(fallback || "");
 }
@@ -393,6 +433,19 @@ function extractConfidence(markdown) {
   if (/低|low/i.test(line)) return "低";
   if (/中|medium/i.test(line)) return "中";
   if (/高|high/i.test(line)) return "高";
+  return cleanupInline(line);
+}
+
+function extractConfidence(markdown) {
+  const line = markdown
+    .split(/\r?\n/)
+    .map((item) => cleanupInline(item))
+    .find((item) => /缃俊搴confidence|置信度/i.test(item));
+  if (!line) return "";
+  if (/鏋佷綆|very low|极低/i.test(line)) return "极低";
+  if (/浣巪low|低/i.test(line)) return "低";
+  if (/涓瓅medium|中/i.test(line)) return "中";
+  if (/楂榺high|高/i.test(line)) return "高";
   return cleanupInline(line);
 }
 

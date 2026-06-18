@@ -1,37 +1,37 @@
 window.SITE_DATA = {
-  "updatedAt": "2026-06-18 19:13",
+  "updatedAt": "2026-06-18 20:49",
   "dashboard": {
     "headline": "2026 世界杯预测、复盘与专题研究中枢",
     "subtitle": "把赛前判断、赛后校准、模型战绩和趋势信号放进同一套静态结构里，方便持续更新。",
     "today": {
       "title": "今日主推",
-      "match": "乌兹别克斯坦 vs 哥伦比亚",
-      "time": "2026-06-17",
-      "score": "2026-06",
-      "confidence": "低",
+      "match": "加拿大 vs 卡塔尔",
+      "time": "2026-06-18",
+      "score": "2-1",
+      "confidence": "中",
       "probabilities": [
         {
-          "label": "主胜",
-          "value": 2,
+          "label": "加拿大胜",
+          "value": 58,
           "tone": "green"
         },
         {
           "label": "平局",
-          "value": 80,
+          "value": 24,
           "tone": "gold"
         },
         {
-          "label": "客胜",
-          "value": 90,
+          "label": "卡塔尔胜",
+          "value": 18,
           "tone": "red"
         }
       ],
       "reasons": [
-        "总xG：2.00 - 3.00",
-        "哥伦比亚 xG：1.50 - 2.20 | 乌兹别克斯坦 xG：0.70 - 1.20",
-        "实力差距全方位： 哥伦比亚FIFA 13，拥有路易斯·迪亚斯（拜仁世界级）+J罗（世界杯金靴）+英超两名首发。乌兹别克斯坦FIFA 58，除胡萨诺夫（曼城轮换）外所有球员来自亚洲联赛。差距不仅是排名，而是联赛质量的\"级差\"。"
+        "最可能比分：加拿大 2-1 卡塔尔（~13%）",
+        "胜率分布：🇨🇦 加拿大 58% · 平 24% · 🇶🇦 卡塔尔 18%",
+        "置信度：中"
       ],
-      "articleId": "prediction-uzbekistan-colombia"
+      "articleId": "prediction-canada-qatar"
     },
     "reviewCards": [
       {
@@ -52,7 +52,7 @@ window.SITE_DATA = {
     "metrics": [
       {
         "label": "站内文章",
-        "value": "55",
+        "value": "63",
         "note": "四大板块统一索引，按时间倒序更新"
       },
       {
@@ -100,8 +100,8 @@ window.SITE_DATA = {
     "signals": [
       {
         "label": "今日主推",
-        "value": "乌兹别克斯坦 vs 哥伦比亚",
-        "note": "总xG：2.00 - 3.00"
+        "value": "加拿大 vs 卡塔尔",
+        "note": "最可能比分：加拿大 2-1 卡塔尔（~13%）"
       },
       {
         "label": "最新专题",
@@ -115,7 +115,7 @@ window.SITE_DATA = {
       },
       {
         "label": "预测储备",
-        "value": "0 场",
+        "value": "5 场",
         "note": "已写入后续赛程的赛前预测"
       }
     ],
@@ -127,6 +127,305 @@ window.SITE_DATA = {
     ]
   },
   "articles": [
+    {
+      "id": "prediction-mexico-south-korea",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-19 · 墨西哥 vs 韩国 · 预测",
+      "date": "2026-06-19",
+      "summary": "最可能比分：墨西哥 2-0 韩国（~13%）",
+      "file": "prediction-mexico-south-korea.md",
+      "tags": [
+        "赛前预测",
+        "xG"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "53/25/22"
+        },
+        {
+          "label": "总进球",
+          "value": "待补充"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "墨西哥 vs 韩国"
+    },
+    {
+      "id": "prediction-brazil-haiti",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-19 · 巴西 vs 海地 · 预测",
+      "date": "2026-06-19",
+      "summary": "最可能比分：巴西 3-0 海地（~15%）",
+      "file": "prediction-brazil-haiti.md",
+      "tags": [
+        "赛前预测",
+        "xG"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "3-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "88/8/4"
+        },
+        {
+          "label": "总进球",
+          "value": "待补充"
+        },
+        {
+          "label": "置信度",
+          "value": "高"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "巴西 vs 海地"
+    },
+    {
+      "id": "prediction-scotland-morocco",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-19 · 苏格兰 vs 摩洛哥 · 预测",
+      "date": "2026-06-19",
+      "summary": "最可能比分：摩洛哥 1-0 苏格兰（~13%）",
+      "file": "prediction-scotland-morocco.md",
+      "tags": [
+        "赛前预测",
+        "xG"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "1-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "21/28/51"
+        },
+        {
+          "label": "总进球",
+          "value": "待补充"
+        },
+        {
+          "label": "置信度",
+          "value": "高"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "苏格兰 vs 摩洛哥"
+    },
+    {
+      "id": "prediction-turkey-paraguay",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-19 · 土耳其 vs 巴拉圭 · 预测",
+      "date": "2026-06-19",
+      "summary": "最可能比分：土耳其 1-1 巴拉圭（~13%）️ 平局信号优先",
+      "file": "prediction-turkey-paraguay.md",
+      "tags": [
+        "赛前预测",
+        "xG"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "1-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "40/34/26"
+        },
+        {
+          "label": "总进球",
+          "value": "待补充"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "土耳其 vs 巴拉圭"
+    },
+    {
+      "id": "prediction-usa-australia",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-19 · 美国 vs 澳大利亚 · 预测",
+      "date": "2026-06-19",
+      "summary": "最可能比分：美国 2-0 澳大利亚（~13%）",
+      "file": "prediction-usa-australia.md",
+      "tags": [
+        "赛前预测",
+        "xG"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "65/21/14"
+        },
+        {
+          "label": "总进球",
+          "value": "待补充"
+        },
+        {
+          "label": "置信度",
+          "value": "高"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "美国 vs 澳大利亚"
+    },
+    {
+      "id": "prediction-canada-qatar",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-18 · 加拿大 vs 卡塔尔 · 预测",
+      "date": "2026-06-18",
+      "summary": "最可能比分：加拿大 2-1 卡塔尔（~13%）",
+      "file": "prediction-canada-qatar.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "58/24/18"
+        },
+        {
+          "label": "总进球",
+          "value": "待补充"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "加拿大 vs 卡塔尔"
+    },
+    {
+      "id": "prediction-czechia-south-africa",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-18 · 捷克 vs 南非 · 预测",
+      "date": "2026-06-18",
+      "summary": "最可能比分：捷克 1-0 南非（~14%）",
+      "file": "prediction-czechia-south-africa.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "1-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "48/29/23"
+        },
+        {
+          "label": "总进球",
+          "value": "待补充"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "捷克 vs 南非"
+    },
+    {
+      "id": "prediction-switzerland-bosnia-herzegovina",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-18 · 瑞士 vs 波黑 · 预测",
+      "date": "2026-06-18",
+      "summary": "最可能比分：瑞士 1-0 波黑（~15%）",
+      "file": "prediction-switzerland-bosnia-herzegovina.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "1-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "60/25/15"
+        },
+        {
+          "label": "总进球",
+          "value": "待补充"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "瑞士 vs 波黑"
+    },
     {
       "id": "feature-wc2026-blowout-prediction",
       "type": "feature",
@@ -382,7 +681,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "06-16"
         },
         {
           "label": "胜平负",
@@ -422,7 +721,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "1-1"
         },
         {
           "label": "胜平负",
@@ -462,7 +761,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "2-1"
         },
         {
           "label": "胜平负",
@@ -502,7 +801,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "06-16"
         },
         {
           "label": "胜平负",
@@ -621,7 +920,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "06-15"
         },
         {
           "label": "胜平负",
@@ -660,7 +959,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "2-0"
         },
         {
           "label": "胜平负",
@@ -700,7 +999,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "2 - 1"
         },
         {
           "label": "胜平负",
@@ -739,7 +1038,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "06-15"
         },
         {
           "label": "胜平负",
@@ -1134,7 +1433,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "2-1"
         },
         {
           "label": "胜平负",
@@ -1174,7 +1473,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "1-1"
         },
         {
           "label": "胜平负",
@@ -1214,7 +1513,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "0-2"
         },
         {
           "label": "胜平负",
@@ -1254,7 +1553,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "2-1"
         },
         {
           "label": "胜平负",
@@ -1294,7 +1593,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "3-0"
         },
         {
           "label": "胜平负",
@@ -1533,7 +1832,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "1-1"
         },
         {
           "label": "胜平负",
@@ -1573,7 +1872,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "1-2"
         },
         {
           "label": "胜平负",
@@ -1613,7 +1912,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "3-0"
         },
         {
           "label": "胜平负",
@@ -1653,7 +1952,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "1-0"
         },
         {
           "label": "胜平负",
@@ -1693,7 +1992,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "2-0"
         },
         {
           "label": "胜平负",
@@ -1893,7 +2192,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "06-13"
         },
         {
           "label": "胜平负",
@@ -1933,7 +2232,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "06-13"
         },
         {
           "label": "胜平负",
@@ -1973,7 +2272,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "1-1"
+          "value": "1-0"
         },
         {
           "label": "胜平负",
@@ -2013,7 +2312,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2026-06"
+          "value": "06-06"
         },
         {
           "label": "胜平负",
@@ -2133,7 +2432,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2-0"
+          "value": "1-1"
         },
         {
           "label": "胜平负",
