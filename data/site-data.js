@@ -1,37 +1,37 @@
 window.SITE_DATA = {
-  "updatedAt": "2026-06-18 20:49",
+  "updatedAt": "2026-06-19 19:11",
   "dashboard": {
     "headline": "2026 世界杯预测、复盘与专题研究中枢",
     "subtitle": "把赛前判断、赛后校准、模型战绩和趋势信号放进同一套静态结构里，方便持续更新。",
     "today": {
-      "title": "今日主推",
-      "match": "加拿大 vs 卡塔尔",
-      "time": "2026-06-18",
-      "score": "2-1",
-      "confidence": "中",
+      "title": "浠婃棩涓绘帹",
+      "match": "墨西哥 vs 韩国",
+      "time": "2026-06-19",
+      "score": "2-0",
+      "confidence": "涓?",
       "probabilities": [
         {
-          "label": "加拿大胜",
-          "value": 58,
+          "label": "墨西哥",
+          "value": 53,
           "tone": "green"
         },
         {
-          "label": "平局",
-          "value": 24,
+          "label": "Draw",
+          "value": 25,
           "tone": "gold"
         },
         {
-          "label": "卡塔尔胜",
-          "value": 18,
+          "label": "韩国",
+          "value": 22,
           "tone": "red"
         }
       ],
       "reasons": [
-        "最可能比分：加拿大 2-1 卡塔尔（~13%）",
-        "胜率分布：🇨🇦 加拿大 58% · 平 24% · 🇶🇦 卡塔尔 18%",
+        "最可能比分：墨西哥 2-0 韩国（~13%）",
+        "胜率分布：🇲🇽 墨西哥 53% · 平 25% · 🇰🇷 韩国 22%",
         "置信度：中"
       ],
-      "articleId": "prediction-canada-qatar"
+      "articleId": "prediction-mexico-south-korea"
     },
     "reviewCards": [
       {
@@ -52,7 +52,7 @@ window.SITE_DATA = {
     "metrics": [
       {
         "label": "站内文章",
-        "value": "63",
+        "value": "67",
         "note": "四大板块统一索引，按时间倒序更新"
       },
       {
@@ -100,8 +100,8 @@ window.SITE_DATA = {
     "signals": [
       {
         "label": "今日主推",
-        "value": "加拿大 vs 卡塔尔",
-        "note": "最可能比分：加拿大 2-1 卡塔尔（~13%）"
+        "value": "墨西哥 vs 韩国",
+        "note": "最可能比分：墨西哥 2-0 韩国（~13%）"
       },
       {
         "label": "最新专题",
@@ -115,7 +115,7 @@ window.SITE_DATA = {
       },
       {
         "label": "预测储备",
-        "value": "5 场",
+        "value": "4 场",
         "note": "已写入后续赛程的赛前预测"
       }
     ],
@@ -127,6 +127,161 @@ window.SITE_DATA = {
     ]
   },
   "articles": [
+    {
+      "id": "prediction-ecuador-curacao",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "厄瓜多尔 vs 库拉索 — E组 小组赛第2轮 预测报告",
+      "date": "2026-06-20",
+      "summary": "对阵：厄瓜多尔 vs 库拉索",
+      "file": "prediction-ecuador-curacao.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "3-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "78/14/8"
+        },
+        {
+          "label": "总进球",
+          "value": "xG量化（估）：厄瓜多尔 2.00-2.80 vs 库拉索 0.40-0.70，总xG 2.40-3.50"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "厄瓜多尔 vs 库拉索"
+    },
+    {
+      "id": "prediction-germany-ivory-coast",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "德国 vs 科特迪瓦 — E组 小组赛第2轮 预测报告",
+      "date": "2026-06-20",
+      "summary": "对阵：德国 vs 科特迪瓦",
+      "file": "prediction-germany-ivory-coast.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "63/21/16"
+        },
+        {
+          "label": "总进球",
+          "value": "预计本场总xG区间：2.50-3.50"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "德国 vs 科特迪瓦"
+    },
+    {
+      "id": "prediction-netherlands-sweden",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "荷兰 vs 瑞典 — F组 小组赛第2轮 预测报告",
+      "date": "2026-06-20",
+      "summary": "时间：2026年6月20日 13:00 ET / 6月21日 01:00 北京时间",
+      "file": "prediction-netherlands-sweden.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "45/30/25"
+        },
+        {
+          "label": "总进球",
+          "value": "xG量化： 荷兰场均xG 1.3（+18%超预期），xGA 0.9（防守超预期13%）；瑞典xG 1.6（+9%），xGA 1.4（防守低于预期71%！）。xGscore预测：荷兰 1.6 - 1.0 瑞典。总xG 1.90-2.80。"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "荷兰 vs 瑞典"
+    },
+    {
+      "id": "prediction-tunisia-japan",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "突尼斯 vs 日本 — F组 小组赛第2轮 预测报告",
+      "date": "2026-06-20",
+      "summary": "时间：2026年6月20日 22:00 CT / 6月21日 11:00 北京时间",
+      "file": "prediction-tunisia-japan.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "18/22/60"
+        },
+        {
+          "label": "总进球",
+          "value": "xG量化（估）：日本 1.50-2.10 vs 突尼斯 0.35-0.70，总xG 1.85-2.80"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "突尼斯 vs 日本"
+    },
     {
       "id": "prediction-mexico-south-korea",
       "type": "prediction",
@@ -150,7 +305,7 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "待补充"
+          "value": "| xG 区间 | 1.55 - 1.95 | 0.85 - 1.15 |"
         },
         {
           "label": "置信度",
@@ -187,11 +342,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "待补充"
+          "value": "| xG 区间 | 3.50 - 4.20 | 0.30 - 0.60 |"
         },
         {
           "label": "置信度",
-          "value": "高"
+          "value": "中"
         }
       ],
       "related": [
@@ -224,11 +379,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "待补充"
+          "value": "| xG 区间 | 0.85 - 1.20 | 1.50 - 2.05 |"
         },
         {
           "label": "置信度",
-          "value": "高"
+          "value": "中"
         }
       ],
       "related": [
@@ -261,7 +416,7 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "待补充"
+          "value": "| xG 区间 | 1.20 - 1.65 | 0.90 - 1.35 |"
         },
         {
           "label": "置信度",
@@ -298,11 +453,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "待补充"
+          "value": "| xG 区间 | 2.05 - 2.55 | 0.70 - 1.05 |"
         },
         {
           "label": "置信度",
-          "value": "高"
+          "value": "中"
         }
       ],
       "related": [
@@ -313,125 +468,11 @@ window.SITE_DATA = {
       "match": "美国 vs 澳大利亚"
     },
     {
-      "id": "prediction-canada-qatar",
-      "type": "prediction",
-      "section": "赛前预测",
-      "title": "2026-06-18 · 加拿大 vs 卡塔尔 · 预测",
-      "date": "2026-06-18",
-      "summary": "最可能比分：加拿大 2-1 卡塔尔（~13%）",
-      "file": "prediction-canada-qatar.md",
-      "tags": [
-        "赛前预测",
-        "xG",
-        "世界杯"
-      ],
-      "stats": [
-        {
-          "label": "预测比分",
-          "value": "2-1"
-        },
-        {
-          "label": "胜平负",
-          "value": "58/24/18"
-        },
-        {
-          "label": "总进球",
-          "value": "待补充"
-        },
-        {
-          "label": "置信度",
-          "value": "中"
-        }
-      ],
-      "related": [
-        "feature-round2-matchday2-prediction",
-        "feature-wc2026-blowout-prediction",
-        "feature-blowout-analysis"
-      ],
-      "match": "加拿大 vs 卡塔尔"
-    },
-    {
-      "id": "prediction-czechia-south-africa",
-      "type": "prediction",
-      "section": "赛前预测",
-      "title": "2026-06-18 · 捷克 vs 南非 · 预测",
-      "date": "2026-06-18",
-      "summary": "最可能比分：捷克 1-0 南非（~14%）",
-      "file": "prediction-czechia-south-africa.md",
-      "tags": [
-        "赛前预测",
-        "xG",
-        "世界杯"
-      ],
-      "stats": [
-        {
-          "label": "预测比分",
-          "value": "1-0"
-        },
-        {
-          "label": "胜平负",
-          "value": "48/29/23"
-        },
-        {
-          "label": "总进球",
-          "value": "待补充"
-        },
-        {
-          "label": "置信度",
-          "value": "中"
-        }
-      ],
-      "related": [
-        "feature-round2-matchday2-prediction",
-        "feature-wc2026-blowout-prediction",
-        "feature-blowout-analysis"
-      ],
-      "match": "捷克 vs 南非"
-    },
-    {
-      "id": "prediction-switzerland-bosnia-herzegovina",
-      "type": "prediction",
-      "section": "赛前预测",
-      "title": "2026-06-18 · 瑞士 vs 波黑 · 预测",
-      "date": "2026-06-18",
-      "summary": "最可能比分：瑞士 1-0 波黑（~15%）",
-      "file": "prediction-switzerland-bosnia-herzegovina.md",
-      "tags": [
-        "赛前预测",
-        "xG",
-        "世界杯"
-      ],
-      "stats": [
-        {
-          "label": "预测比分",
-          "value": "1-0"
-        },
-        {
-          "label": "胜平负",
-          "value": "60/25/15"
-        },
-        {
-          "label": "总进球",
-          "value": "待补充"
-        },
-        {
-          "label": "置信度",
-          "value": "中"
-        }
-      ],
-      "related": [
-        "feature-round2-matchday2-prediction",
-        "feature-wc2026-blowout-prediction",
-        "feature-blowout-analysis"
-      ],
-      "match": "瑞士 vs 波黑"
-    },
-    {
       "id": "feature-wc2026-blowout-prediction",
       "type": "feature",
       "section": "专题研究",
       "title": "2026 世界杯小组赛「大比分高概率场次」预测分析",
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "summary": "2026 世界杯小组赛「大比分高概率场次」预测分析",
       "file": "feature-wc2026-blowout-prediction.md",
       "tags": [
@@ -470,7 +511,7 @@ window.SITE_DATA = {
       "type": "feature",
       "section": "专题研究",
       "title": "2018 & 2022 世界杯「大比分比赛」特征深度分析报告",
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "summary": "2018：12 场大比分中有 9 场（75%）包含定位球进球（点球、角球、任意球）",
       "file": "feature-blowout-analysis.md",
       "tags": [
@@ -504,6 +545,120 @@ window.SITE_DATA = {
       ],
       "subtype": "强弱差模型",
       "match": "小组赛 A 组 俄罗斯 vs 沙特阿拉伯"
+    },
+    {
+      "id": "prediction-canada-qatar",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-18 · 加拿大 vs 卡塔尔 · 预测",
+      "date": "2026-06-18",
+      "summary": "最可能比分：加拿大 2-1 卡塔尔（~13%）",
+      "file": "prediction-canada-qatar.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "58/24/18"
+        },
+        {
+          "label": "总进球",
+          "value": "| xG 区间 | 1.40 - 1.85 | 0.85 - 1.25 |"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "加拿大 vs 卡塔尔"
+    },
+    {
+      "id": "prediction-czechia-south-africa",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-18 · 捷克 vs 南非 · 预测",
+      "date": "2026-06-18",
+      "summary": "最可能比分：捷克 1-0 南非（~14%）",
+      "file": "prediction-czechia-south-africa.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "1-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "48/29/23"
+        },
+        {
+          "label": "总进球",
+          "value": "| xG 区间 | 1.20 - 1.65 | 0.75 - 1.05 |"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "捷克 vs 南非"
+    },
+    {
+      "id": "prediction-switzerland-bosnia-herzegovina",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026-06-18 · 瑞士 vs 波黑 · 预测",
+      "date": "2026-06-18",
+      "summary": "最可能比分：瑞士 1-0 波黑（~15%）",
+      "file": "prediction-switzerland-bosnia-herzegovina.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "1-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "60/25/15"
+        },
+        {
+          "label": "总进球",
+          "value": "| xG 区间 | 1.40 - 1.95 | 0.65 - 1.10 |"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "瑞士 vs 波黑"
     },
     {
       "id": "review-england-croatia",
@@ -681,7 +836,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "06-16"
+          "value": "1-0"
         },
         {
           "label": "胜平负",
@@ -689,11 +844,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "预期xG区间"
+          "value": "关键发现： 乌兹别克斯坦面对荷兰仅1-2失利——这支Tier 1的对手按理说应该在正常比赛中以3-4球获胜。这暗示乌兹别克斯坦的防守组织可能比xG评级3.5所反映的水平高得多。哥伦比亚面对法国（1-3）和克罗地亚（1-2）的失分是可预期的，但3-0击败澳大利亚展现了强队水平。"
         },
         {
           "label": "置信度",
-          "value": "低"
+          "value": "中"
         }
       ],
       "related": [
@@ -721,7 +876,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "1-1"
+          "value": "1-0"
         },
         {
           "label": "胜平负",
@@ -729,11 +884,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "预期xG区间"
+          "value": "攻防分析： 两队xG极为接近（1.30 vs 1.20），但加纳在库杜斯缺席后攻击力大幅下降。巴拿马的组织型防守（5场友谊赛仅1场失2球以上）使他们比加纳的\"松散失位\"型防守更为可靠。预计控球率接近（48-52%），比赛将是一场中场缠斗而非开放式对决。"
         },
         {
           "label": "置信度",
-          "value": "极低"
+          "value": "中"
         }
       ],
       "related": [
@@ -761,7 +916,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2-1"
+          "value": "1-0"
         },
         {
           "label": "胜平负",
@@ -769,11 +924,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "预期xG区间"
+          "value": "- 总xG：2.20 - 3.20"
         },
         {
           "label": "置信度",
-          "value": "低"
+          "value": "中"
         }
       ],
       "related": [
@@ -801,7 +956,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "06-16"
+          "value": "2-0"
         },
         {
           "label": "胜平负",
@@ -809,11 +964,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "预期xG区间"
+          "value": "- 总xG：2.70 - 3.80"
         },
         {
           "label": "置信度",
-          "value": "低"
+          "value": "中"
         }
       ],
       "related": [
@@ -920,7 +1075,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "06-15"
+          "value": "3-0"
         },
         {
           "label": "胜平负",
@@ -928,11 +1083,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "| 总进球 大3.0 | 1.97 | 1.92 |"
+          "value": "| 预计本场xG | 0.30 - 1.00 | 2.30 - 3.80 |"
         },
         {
           "label": "置信度",
-          "value": "低"
+          "value": "中"
         }
       ],
       "related": [
@@ -967,11 +1122,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "xG区间对比"
+          "value": "️ 关键发现：约旦状态评分（5.6）略高于奥地利（5.2）！ 原因在于约旦近期对手强度（哥伦比亚、瑞士、摩洛哥均为Tier 1）远高于奥地利对手（突尼斯、韩国、加纳为Tier 2-3）。约旦虽然战绩不佳（L-D-D-L-L），但面对顶级强队的竞争力被xG模型捕捉。然而，奥地利78%的可预测性意味着发挥更稳定。"
         },
         {
           "label": "置信度",
-          "value": "低"
+          "value": "中"
         }
       ],
       "related": [
@@ -999,7 +1154,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2 - 1"
+          "value": "2-0"
         },
         {
           "label": "胜平负",
@@ -1007,11 +1162,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "预期xG区间"
+          "value": "| 预计本场xG | 1.80 - 2.50 | 0.50 - 0.90 |"
         },
         {
           "label": "置信度",
-          "value": "低"
+          "value": "中"
         }
       ],
       "related": [
@@ -1038,7 +1193,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "06-15"
+          "value": "0-1"
         },
         {
           "label": "胜平负",
@@ -1441,11 +1596,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "待补充"
+          "value": "预期 xG 区间：瑞典 1.60-2.00 / 突尼斯 0.80-1.20"
         },
         {
           "label": "置信度",
-          "value": "高"
+          "value": "中"
         }
       ],
       "related": [
@@ -1477,11 +1632,11 @@ window.SITE_DATA = {
         },
         {
           "label": "胜平负",
-          "value": "80/80/50"
+          "value": "80/80/80"
         },
         {
           "label": "总进球",
-          "value": "| 预期总xG区间 | 2.10-2.80 | |"
+          "value": "| 预估xG（本场） | 1.40-1.80 | 0.70-1.00 |"
         },
         {
           "label": "置信度",
@@ -1521,11 +1676,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "| 预期总xG区间 | 1.90-2.75 | |"
+          "value": "| 预估xG（本场） | 0.70-0.95 | 1.20-1.80 |"
         },
         {
           "label": "置信度",
-          "value": "高"
+          "value": "中"
         }
       ],
       "related": [
@@ -1553,7 +1708,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2-1"
+          "value": "1-1"
         },
         {
           "label": "胜平负",
@@ -1561,11 +1716,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "| 预计总xG区间 | 2.80 - 3.70 | |"
+          "value": "| 预计本场xG | 1.95 - 2.45 | 0.85 - 1.25 |"
         },
         {
           "label": "置信度",
-          "value": "低"
+          "value": "中"
         }
       ],
       "related": [
@@ -1593,19 +1748,19 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "3-0"
+          "value": "2-0"
         },
         {
           "label": "胜平负",
-          "value": "50/50/30"
+          "value": "6/45/80"
         },
         {
           "label": "总进球",
-          "value": "| 预计总xG区间 | 2.70 - 3.75 | |"
+          "value": "| 预计本场xG | 2.40 - 3.10 | 0.30 - 0.65 |"
         },
         {
           "label": "置信度",
-          "value": "低"
+          "value": "中"
         }
       ],
       "related": [
@@ -1840,7 +1995,7 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "待补充"
+          "value": "预期 xG 区间：科特迪瓦 1.10-1.50 / 厄瓜多尔 1.20-1.60"
         },
         {
           "label": "置信度",
@@ -1880,7 +2035,7 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "待补充"
+          "value": "预期 xG 区间：荷兰 1.20-1.60 / 日本 1.40-1.80"
         },
         {
           "label": "置信度",
@@ -1916,15 +2071,15 @@ window.SITE_DATA = {
         },
         {
           "label": "胜平负",
-          "value": "50/95/95"
+          "value": "95/95/90"
         },
         {
           "label": "总进球",
-          "value": "待补充"
+          "value": "- 近 10 场 xG 区间：2.10 - 3.20（场均约 2.65）"
         },
         {
           "label": "置信度",
-          "value": "高"
+          "value": "中"
         }
       ],
       "related": [
@@ -1952,7 +2107,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "1-0"
+          "value": "28-32"
         },
         {
           "label": "胜平负",
@@ -1960,7 +2115,7 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "| 预计总xG区间 | 1.80 - 2.70 | — |"
+          "value": "| 预计本场xG | 0.60 - 0.95 | 1.20 - 1.75 |"
         },
         {
           "label": "置信度",
@@ -1992,7 +2147,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "2-0"
+          "value": "1-1"
         },
         {
           "label": "胜平负",
@@ -2000,11 +2155,11 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "| 预计总xG区间 | 2.25 - 3.00 | — |"
+          "value": "| 预计本场xG | 0.45 - 0.70 | 1.80 - 2.30 |"
         },
         {
           "label": "置信度",
-          "value": "低"
+          "value": "中"
         }
       ],
       "related": [
@@ -2192,11 +2347,11 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "06-13"
+          "value": "1-0"
         },
         {
           "label": "胜平负",
-          "value": "73/55/26"
+          "value": "55/26/19"
         },
         {
           "label": "总进球",
@@ -2204,7 +2359,7 @@ window.SITE_DATA = {
         },
         {
           "label": "置信度",
-          "value": "高"
+          "value": "中"
         }
       ],
       "related": [
@@ -2232,11 +2387,11 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "06-13"
+          "value": "0-2"
         },
         {
           "label": "胜平负",
-          "value": "72/10/18"
+          "value": "10/18/72"
         },
         {
           "label": "总进球",
@@ -2244,7 +2399,7 @@ window.SITE_DATA = {
         },
         {
           "label": "置信度",
-          "value": "高"
+          "value": "中"
         }
       ],
       "related": [
@@ -2272,15 +2427,15 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "1-0"
+          "value": "21-50"
         },
         {
           "label": "胜平负",
-          "value": "72/28/40"
+          "value": "72/40/34"
         },
         {
           "label": "总进球",
-          "value": "预期进球数区间：总进球 1-2 球（概率 ~65%）"
+          "value": "量化 xG 区间预测：预计总 xG 约 1.5-1.9"
         },
         {
           "label": "置信度",
@@ -2312,7 +2467,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "06-06"
+          "value": "2026-05"
         },
         {
           "label": "胜平负",
@@ -2320,7 +2475,7 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "| 总 xG | 1.4 - 2.1 | 偏向低比分，60% 概率总进球 ≤2 |"
+          "value": "| 预计本场 xG | 1.1-1.5 | 主场加成 + Balogun 火热状态 + 巴拉圭密集防守抵消 |"
         },
         {
           "label": "置信度",
@@ -2432,7 +2587,7 @@ window.SITE_DATA = {
       "stats": [
         {
           "label": "预测比分",
-          "value": "1-1"
+          "value": "2-0"
         },
         {
           "label": "胜平负",
@@ -2440,7 +2595,7 @@ window.SITE_DATA = {
         },
         {
           "label": "总进球",
-          "value": "待补充"
+          "value": "️ 置信度：中。原因：①裴俊浩出战状态不确定；②韩国0-4负科特迪瓦异常值难解释；③捷克输法罗群岛同样异常；④两队交手均为2016年前友谊赛；⑤缺少xG等深度数据。"
         },
         {
           "label": "置信度",

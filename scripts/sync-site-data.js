@@ -449,6 +449,120 @@ function extractConfidence(markdown) {
   return cleanupInline(line);
 }
 
+// Override prediction parsers with stricter heuristics for newer templates.
+function extractProbabilityTriplet(markdown, match) {
+  const inline = extractInlineProbabilities(markdown, match);
+  if (inline.length) return inline;
+
+  const rows = markdown.split(/\r?\n/).filter((line) => /^\|/.test(line) && /%/.test(line));
+  const items = [];
+
+  for (const row of rows) {
+    if (/\d+\s*-\s*\d+/.test(row) || /20\d{2}[-/]\d{1,2}[-/]\d{1,2}/.test(row)) continue;
+    const cells = splitTableRow(row);
+    if (cells.length < 2) continue;
+    const pct = cells.find((cell) => /\d{1,3}(?:\.\d+)?%/.test(cell));
+    if (!pct) continue;
+    const value = Number((pct.match(/\d{1,3}(?:\.\d+)?/) || [])[0]);
+    if (!Number.isFinite(value)) continue;
+    items.push({
+      label: probabilityLabel(cleanupInline(cells[0]), match, items.length),
+      value,
+      tone: items.length === 0 ? "green" : items.length === 1 ? "gold" : "red"
+    });
+    if (items.length === 3) break;
+  }
+
+  return items;
+}
+
+function extractInlineProbabilities(markdown, match) {
+  const line = markdown
+    .split(/\r?\n/)
+    .map((item) => cleanupInline(item))
+    .find((item) => {
+      const percentCount = Array.from(item.matchAll(/(\d{1,3}(?:\.\d+)?)%/g)).length;
+      if (percentCount !== 3) return false;
+      if (/\d+\s*-\s*\d+/.test(item) || /20\d{2}[-/]\d{1,2}[-/]\d{1,2}/.test(item)) return false;
+      return /鑳滅巼鍒嗗竷|姒傜巼鍒嗗竷|\/|·/.test(item);
+    });
+  if (!line) return [];
+
+  const values = Array.from(line.matchAll(/(\d{1,3}(?:\.\d+)?)%/g))
+    .map((matched) => Number(matched[1]))
+    .filter((value) => Number.isFinite(value))
+    .slice(0, 3);
+  if (values.length < 3) return [];
+
+  const labels = [];
+  if (match) {
+    const [home, away] = match.split(/\s+vs\s+/i);
+    if (home) labels.push(home + "鑳?");
+    labels.push("骞冲眬");
+    if (away) labels.push(away + "鑳?");
+  }
+
+  return values.map((value, index) => ({
+    label: labels[index] || ["涓昏儨", "骞冲眬", "瀹㈣儨"][index] || "缁撴灉",
+    value,
+    tone: index === 0 ? "green" : index === 1 ? "gold" : "red"
+  }));
+}
+
+function extractFirstScoreLine(markdown, fallback) {
+  for (const row of markdown.split(/\r?\n/).filter((item) => /^\|/.test(item) && /%/.test(item))) {
+    const cells = splitTableRow(row);
+    if (cells.length < 2) continue;
+    if (!/\d+\s*-\s*\d+/.test(cells[0]) || !/%/.test(cells[1])) continue;
+    const tableScoreMatch = cells[0].match(/\d+\s*-\s*\d+/);
+    if (tableScoreMatch) return tableScoreMatch[0];
+  }
+
+  const cleanedLines = markdown
+    .split(/\r?\n/)
+    .map((item) => cleanupInline(item))
+    .filter(Boolean);
+
+  const preferredLine = cleanedLines.find((item) => {
+    if (!/\d+\s*-\s*\d+/.test(item)) return false;
+    if (/20\d{2}[-/]\d{1,2}[-/]\d{1,2}/.test(item)) return false;
+    return /鏈€鍙兘姣斿垎|棰勬祴姣斿垎|姣斿垎棰勬祴|\||%/.test(item);
+  });
+  if (preferredLine) {
+    const preferredMatch = preferredLine.match(/\d+\s*-\s*\d+/);
+    if (preferredMatch) return preferredMatch[0];
+  }
+
+  for (const line of cleanedLines) {
+    if (/20\d{2}[-/]\d{1,2}[-/]\d{1,2}/.test(line)) continue;
+    const scoreMatch = line.match(/\b\d+\s*-\s*\d+\b/);
+    if (scoreMatch) return scoreMatch[0];
+  }
+
+  return cleanupInline(fallback || "");
+}
+
+function extractTotalGoals(markdown) {
+  const line = markdown
+    .split(/\r?\n/)
+    .map((item) => cleanupInline(item))
+    .find((item) => /鎬昏繘鐞億xG鍖洪棿|杩涚悆鍖洪棿|total xg|xg/i.test(item) && /\d+(?:\.\d+)?\s*-\s*\d+(?:\.\d+)?/.test(item));
+  return line ? line : "";
+}
+
+function extractConfidence(markdown) {
+  const line = markdown
+    .split(/\r?\n/)
+    .map((item) => cleanupInline(item))
+    .find((item) => /缂冾喕淇婃惔顩onfidence|缃俊搴?|confidence/i.test(item));
+  if (!line) return "";
+  if (/閺嬩椒缍唡very low|鏋佷綆/i.test(line)) return "鏋佷綆";
+  if (/娴ｅ藩low|浣?|low/i.test(line)) return "浣?";
+  if (/娑撶搮medium|涓?|medium/i.test(line)) return "涓?";
+  if (/妤傛high|楂?|high/i.test(line)) return "楂?";
+  return cleanupInline(line);
+}
+
 function extractReviewStats(markdown, match) {
   const reviewRows = parseReviewRows(markdown);
   const scoreRow = reviewRows[0];
@@ -785,6 +899,39 @@ function stripInternalFields(article) {
   if (article.subtype) output.subtype = article.subtype;
   if (article.match) output.match = article.match;
   return output;
+}
+
+function buildTodayCard(article) {
+  const probabilities = extractProbabilityTriplet(article.markdown || "", article.match);
+  const normalizedProbabilities = (() => {
+    if (!probabilities.length || !article.match || !article.match.includes(" vs ")) return probabilities;
+    const [home, away] = article.match.split(/\s+vs\s+/i);
+    const labels = [home, "Draw", away];
+    return probabilities.map((item, index) => ({
+      ...item,
+      label: labels[index] || item.label
+    }));
+  })();
+  const score = extractFirstScoreLine(
+    article.markdown || "",
+    statValue(article, "棰勬祴姣斿垎", article.summary || "寰呰ˉ鍏?")
+  );
+  const confidence = extractConfidence(article.markdown || "") || statValue(article, "缃俊搴?", "涓?");
+
+  return {
+    title: "浠婃棩涓绘帹",
+    match: article.match || article.title || "鏆傛棤",
+    time: article.date || currentDate,
+    score,
+    confidence,
+    probabilities: normalizedProbabilities.length ? normalizedProbabilities : [
+      { label: "涓昏儨", value: 50, tone: "green" },
+      { label: "骞冲眬", value: 28, tone: "gold" },
+      { label: "瀹㈣儨", value: 22, tone: "red" }
+    ],
+    reasons: extractReasons(article.markdown || "", article.summary || ""),
+    articleId: article.id || ""
+  };
 }
 
 function statValue(article, label, fallback) {
