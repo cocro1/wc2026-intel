@@ -1,73 +1,63 @@
 window.SITE_DATA = {
-  "updatedAt": "2026-06-19 19:11",
+  "updatedAt": "2026-06-21 19:04",
   "dashboard": {
     "headline": "2026 世界杯预测、复盘与专题研究中枢",
     "subtitle": "把赛前判断、赛后校准、模型战绩和趋势信号放进同一套静态结构里，方便持续更新。",
     "today": {
       "title": "浠婃棩涓绘帹",
-      "match": "墨西哥 vs 韩国",
-      "time": "2026-06-19",
-      "score": "2-0",
+      "match": "阿根廷 vs 奥地利",
+      "time": "2026-06-22",
+      "score": "3-0",
       "confidence": "涓?",
       "probabilities": [
         {
-          "label": "墨西哥",
-          "value": 53,
+          "label": "阿根廷",
+          "value": 58,
           "tone": "green"
-        },
-        {
-          "label": "Draw",
-          "value": 25,
-          "tone": "gold"
-        },
-        {
-          "label": "韩国",
-          "value": 22,
-          "tone": "red"
         }
       ],
       "reasons": [
-        "最可能比分：墨西哥 2-0 韩国（~13%）",
-        "胜率分布：🇲🇽 墨西哥 53% · 平 25% · 🇰🇷 韩国 22%",
-        "置信度：中"
+        "双方： 阿根廷 vs 奥地利",
+        "时间： 2026-06-22 13:00 EDT / 2026-06-23 01:00 北京时间",
+        "地点： AT&T体育场，达拉斯（德克萨斯州）"
       ],
-      "articleId": "prediction-mexico-south-korea"
+      "articleId": "prediction-argentina-austria"
     },
     "reviewCards": [
       {
         "label": "最新复盘",
-        "match": "england vs croatia",
-        "result": "英格兰 4-2 克罗地亚",
-        "note": "8项命中：赛果方向、Kane、Bellingham、双方进球、克罗地亚反击、控球优势、平局概率、克罗地亚胜率",
-        "articleId": "review-england-croatia"
+        "match": "ecuador vs curacao review",
+        "result": "0-0",
+        "note": "赛事：2026世界杯 E组 小组赛第2轮",
+        "articleId": "review-ecuador-curacao"
       },
       {
         "label": "最新复盘",
-        "match": "ghana vs panama",
-        "result": "加纳 1-0 巴拿马",
-        "note": "3项命中：紧密低位比赛、备选覆盖、加纳整体实力略优",
-        "articleId": "review-ghana-panama"
+        "match": "germany ivory vs coast review",
+        "result": "2-1",
+        "note": "赛事：2026世界杯 E组 小组赛第2轮",
+        "articleId": "review-germany-ivory-coast"
       }
     ],
     "metrics": [
       {
         "label": "站内文章",
-        "value": "67",
+        "value": "83",
         "note": "四大板块统一索引，按时间倒序更新"
       },
       {
         "label": "已复盘场次",
-        "value": "20",
+        "value": "27",
         "note": "复盘样本继续累积，模型判断持续校准"
       },
       {
         "label": "胜平负命中",
-        "value": "35%",
-        "note": "7/20，先看方向稳定性"
+        "value": "26%",
+        "note": "7/27，先看方向稳定性"
       },
       {
         "label": "复盘评分",
-        "value": "5.5",
+        "value": "5.7",
         "note": "按复盘文中的总体评分动态更新"
       }
     ],
@@ -75,33 +65,33 @@ window.SITE_DATA = {
       {
         "label": "胜平负命中",
         "value": 7,
-        "total": 20,
-        "tone": "gold"
+        "total": 27,
+        "tone": "red"
       },
       {
         "label": "精确比分命中",
         "value": 0,
-        "total": 20,
+        "total": 27,
         "tone": "red"
       },
       {
         "label": "备选比分覆盖",
         "value": 3,
-        "total": 20,
+        "total": 27,
         "tone": "red"
       },
       {
         "label": "大小球命中",
         "value": 9,
-        "total": 20,
-        "tone": "gold"
+        "total": 27,
+        "tone": "red"
       }
     ],
     "signals": [
       {
         "label": "今日主推",
-        "value": "墨西哥 vs 韩国",
-        "note": "最可能比分：墨西哥 2-0 韩国（~13%）"
+        "value": "阿根廷 vs 奥地利",
+        "note": "双方： 阿根廷 vs 奥地利"
       },
       {
         "label": "最新专题",
@@ -110,12 +100,12 @@ window.SITE_DATA = {
       },
       {
         "label": "最新复盘",
-        "value": "england vs croatia",
-        "note": "8项命中：赛果方向、Kane、Bellingham、双方进球、克罗地亚反击、控球优势、平局概率、克罗地亚胜率"
+        "value": "ecuador vs curacao review",
+        "note": "赛事：2026世界杯 E组 小组赛第2轮"
       },
       {
         "label": "预测储备",
-        "value": "4 场",
+        "value": "8 场",
         "note": "已写入后续赛程的赛前预测"
       }
     ],
@@ -127,6 +117,517 @@ window.SITE_DATA = {
     ]
   },
   "articles": [
+    {
+      "id": "prediction-argentina-austria",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "阿根廷 vs 奥地利 — 2026世界杯 J组 预测报告",
+      "date": "2026-06-22",
+      "summary": "双方： 阿根廷 vs 奥地利",
+      "file": "prediction-argentina-austria.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "3-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "58"
+        },
+        {
+          "label": "总进球",
+          "value": "阿根廷xG 1.74 vs 奥地利xG 1.40，阿根廷xGA 0.70 vs 奥地利xGA 0.99。预测本场总xG区间：2.10-2.80。阿根廷xG略高、防守碾轧优势明显。"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "阿根廷 vs 奥地利"
+    },
+    {
+      "id": "prediction-france-iraq",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "法国 vs 伊拉克 — 2026世界杯 I组 预测报告",
+      "date": "2026-06-22",
+      "summary": "双方： 法国 vs 伊拉克",
+      "file": "prediction-france-iraq.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "3-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "78"
+        },
+        {
+          "label": "总进球",
+          "value": "法国近10场9胜1负。对Tier 1（前20）对手5战4胜1负，含金量极高。场均进球3.6+，近5场3场打入3球。xG约2.2-2.5。唯一失利是友谊赛对科特迪瓦（1-2）。姆巴佩首轮2球，98场56球的国家队效率惊人。"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "法国 vs 伊拉克"
+    },
+    {
+      "id": "prediction-jordan-algeria",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "约旦 vs 阿尔及利亚 — 2026世界杯 J组 预测报告",
+      "date": "2026-06-22",
+      "summary": "双方： 约旦 vs 阿尔及利亚",
+      "file": "prediction-jordan-algeria.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "1-3"
+        },
+        {
+          "label": "胜平负",
+          "value": "22"
+        },
+        {
+          "label": "总进球",
+          "value": "约旦近10场4胜3平3负。对Tier 1-2对手难求一胜（仅2平4负）。首次世界杯，首轮1-3负奥地利展示了一定的进攻能力（Olwan世界杯首球）。但防守端面对较强对手频繁丢球。预选赛（Tier 3-4为主）的数据参考价值低。场均进球1.5，失球1.6。xG约1.00-1.20。"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "约旦 vs 阿尔及利亚"
+    },
+    {
+      "id": "prediction-norway-senegal",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "挪威 vs 塞内加尔 — 2026世界杯 I组 预测报告",
+      "date": "2026-06-22",
+      "summary": "双方： 挪威 vs 塞内加尔",
+      "file": "prediction-norway-senegal.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "4-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "42"
+        },
+        {
+          "label": "总进球",
+          "value": "挪威近10场6胜3平1负。预选赛8战全胜（进37失2!）。首轮4-1大胜展现强大火力。哈兰德50场55球的效率惊人、11场连续国家队进球。但注意：对Tier 1对手0胜（1平3负）。防守端近7场仅1次零封。xG约1.80-2.20，xGA约1.00-1.30。"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "挪威 vs 塞内加尔"
+    },
+    {
+      "id": "prediction-belgium-iran",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "比利时 vs 伊朗 — 2026世界杯 G组 预测报告",
+      "date": "2026-06-22",
+      "summary": "双方： 比利时 vs 伊朗",
+      "file": "prediction-belgium-iran.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "1-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "35/0/60"
+        },
+        {
+          "label": "总进球",
+          "value": "比利时首轮xG 1.35，xGA 1.08；伊朗首轮xG 1.50，xGA 1.24。<strongxGscore模型预测：比利时 1.30 - 0.95 伊朗。本场总xG预测：1.60-2.60。</strong"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "比利时 vs 伊朗"
+    },
+    {
+      "id": "prediction-egypt-new-zealand",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "埃及 vs 新西兰 — 2026世界杯 G组 预测报告",
+      "date": "2026-06-22",
+      "summary": "双方： 埃及 vs 新西兰",
+      "file": "prediction-egypt-new-zealand.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "1-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "90/55/60"
+        },
+        {
+          "label": "总进球",
+          "value": "埃及首轮xG 1.08，xGA 1.35；新西兰首轮xG 1.24，xGA 1.50。<strongxGscore模型预测：埃及 1.10 - 0.85 新西兰。本场总xG预测：1.30-2.20。</strong"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "埃及 vs 新西兰"
+    },
+    {
+      "id": "prediction-spain-saudi-arabia",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "西班牙 vs 沙特阿拉伯 — 2026世界杯 H组 预测报告",
+      "date": "2026-06-22",
+      "summary": "双方： 西班牙 vs 沙特阿拉伯",
+      "file": "prediction-spain-saudi-arabia.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "0-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "60/75/40"
+        },
+        {
+          "label": "总进球",
+          "value": "首轮赛果：<strong西班牙 0-0 佛得角</strong（Spain xG 2.29，33射0球，终结效率灾难级）| <strong沙特阿拉伯 1-1 乌拉圭</strong（沙特 xG 0.99，乌拉圭 xG 1.54）。H组四队首轮全部平局，积分、净胜球完全相同。本场西班牙若胜则夺回出线主动权，沙特若能取分则继续保持竞争力。"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "西班牙 vs 沙特阿拉伯"
+    },
+    {
+      "id": "prediction-uruguay-cape-verde",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "乌拉圭 vs 佛得角 — 2026世界杯 H组 预测报告",
+      "date": "2026-06-22",
+      "summary": "双方： 乌拉圭 vs 佛得角",
+      "file": "prediction-uruguay-cape-verde.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "1-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "62"
+        },
+        {
+          "label": "总进球",
+          "value": "首轮赛果：<strong沙特阿拉伯 1-1 乌拉圭</strong（乌拉圭27射仅1球，Viñas替补扳平，xG 1.54）| <strong西班牙 0-0 佛得角</strong（佛得角0.30 xG但0-0守平，Vozinha神扑+铁桶阵）。H组四队首轮全部平局。本场乌拉圭若胜则出线形势大好，佛得角若再取分则延续黑马奇迹。"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "乌拉圭 vs 佛得角"
+    },
+    {
+      "id": "feature-wc2026-blowout-prediction",
+      "type": "feature",
+      "section": "专题研究",
+      "title": "2026 世界杯小组赛「大比分高概率场次」预测分析",
+      "date": "2026-06-21",
+      "summary": "2026 世界杯小组赛「大比分高概率场次」预测分析",
+      "file": "feature-wc2026-blowout-prediction.md",
+      "tags": [
+        "专题研究",
+        "世界杯",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "1",
+          "value": "FIFA 排名差 ≥ 30"
+        },
+        {
+          "label": "2",
+          "value": "弱队为世界杯新军"
+        },
+        {
+          "label": "3",
+          "value": "弱队久违参赛 / 经验严重不足"
+        },
+        {
+          "label": "4",
+          "value": "亚洲/非洲防线 vs 欧洲/南美顶级锋线"
+        }
+      ],
+      "related": [
+        "feature-blowout-analysis",
+        "prediction-turkey-paraguay",
+        "feature-over-under-2026-tournament"
+      ],
+      "subtype": "大比分模型",
+      "match": "墨西哥 vs 南非"
+    },
+    {
+      "id": "feature-blowout-analysis",
+      "type": "feature",
+      "section": "专题研究",
+      "title": "2018 & 2022 世界杯「大比分比赛」特征深度分析报告",
+      "date": "2026-06-21",
+      "summary": "2018：12 场大比分中有 9 场（75%）包含定位球进球（点球、角球、任意球）",
+      "file": "feature-blowout-analysis.md",
+      "tags": [
+        "专题研究",
+        "世界杯",
+        "大比分",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "1",
+          "value": "小组赛 A 组"
+        },
+        {
+          "label": "2",
+          "value": "小组赛 G 组"
+        },
+        {
+          "label": "3",
+          "value": "小组赛 G 组"
+        },
+        {
+          "label": "4",
+          "value": "小组赛 B 组"
+        }
+      ],
+      "related": [
+        "feature-wc2026-blowout-prediction",
+        "prediction-turkey-paraguay",
+        "feature-over-under-2026-tournament"
+      ],
+      "subtype": "强弱差模型",
+      "match": "小组赛 A 组 俄罗斯 vs 沙特阿拉伯"
+    },
+    {
+      "id": "review-ecuador-curacao",
+      "type": "review",
+      "section": "赛后复盘",
+      "title": "复盘报告 · 厄瓜多尔 vs 库拉索（2026-06-20）",
+      "date": "2026-06-20",
+      "summary": "赛事：2026世界杯 E组 小组赛第2轮",
+      "file": "review-ecuador-curacao.md",
+      "tags": [
+        "赛后复盘",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "实际比分",
+          "value": "0-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "待补充"
+        },
+        {
+          "label": "大小球",
+          "value": "0球"
+        },
+        {
+          "label": "复盘评分",
+          "value": "3.5/10"
+        }
+      ],
+      "related": [
+        "prediction-ecuador-curacao",
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "ecuador vs curacao review"
+    },
+    {
+      "id": "review-germany-ivory-coast",
+      "type": "review",
+      "section": "赛后复盘",
+      "title": "复盘报告 · 德国 vs 科特迪瓦（2026-06-20）",
+      "date": "2026-06-20",
+      "summary": "赛事：2026世界杯 E组 小组赛第2轮",
+      "file": "review-germany-ivory-coast.md",
+      "tags": [
+        "赛后复盘",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "实际比分",
+          "value": "2-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "️ 备选2-1(9%)覆盖"
+        },
+        {
+          "label": "大小球",
+          "value": "区间内"
+        },
+        {
+          "label": "复盘评分",
+          "value": "6.5/10"
+        }
+      ],
+      "related": [
+        "prediction-germany-ivory-coast",
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "germany ivory vs coast review"
+    },
+    {
+      "id": "review-netherlands-sweden",
+      "type": "review",
+      "section": "赛后复盘",
+      "title": "复盘报告 · 荷兰 vs 瑞典（2026-06-20）",
+      "date": "2026-06-20",
+      "summary": "赛事：2026世界杯 F组 小组赛第2轮",
+      "file": "review-netherlands-sweden.md",
+      "tags": [
+        "赛后复盘",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "实际比分",
+          "value": "5-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "5-1未在备选"
+        },
+        {
+          "label": "大小球",
+          "value": "6球"
+        },
+        {
+          "label": "复盘评分",
+          "value": "5.5/10"
+        }
+      ],
+      "related": [
+        "prediction-netherlands-sweden",
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "netherlands vs sweden review"
+    },
     {
       "id": "prediction-ecuador-curacao",
       "type": "prediction",
@@ -160,6 +661,7 @@ window.SITE_DATA = {
         }
       ],
       "related": [
+        "review-ecuador-curacao",
         "feature-round2-matchday2-prediction",
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis"
@@ -199,6 +701,7 @@ window.SITE_DATA = {
         }
       ],
       "related": [
+        "review-germany-ivory-coast",
         "feature-round2-matchday2-prediction",
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis"
@@ -237,6 +740,7 @@ window.SITE_DATA = {
         }
       ],
       "related": [
+        "review-netherlands-sweden",
         "feature-round2-matchday2-prediction",
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis"
@@ -281,6 +785,202 @@ window.SITE_DATA = {
         "feature-blowout-analysis"
       ],
       "match": "突尼斯 vs 日本"
+    },
+    {
+      "id": "prediction-turkey-paraguay",
+      "type": "feature",
+      "section": "专题研究",
+      "title": "2026世界杯 | 土耳其 🇹🇷 vs 巴拉圭 🇵🇾",
+      "date": "2026-06-20",
+      "summary": "首轮对澳大利亚：30次射门、xG 1.36，但0射进（转化率崩溃）",
+      "file": "prediction-turkey-paraguay.md",
+      "tags": [
+        "专题研究",
+        "xG",
+        "世界杯",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "FIFA世界排名",
+          "value": "22"
+        },
+        {
+          "label": "Footlab Elo评级",
+          "value": "1,604（17）"
+        },
+        {
+          "label": "阵容总身价",
+          "value": "€4.73亿"
+        },
+        {
+          "label": "近48场胜率",
+          "value": "60.4%"
+        }
+      ],
+      "related": [
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis",
+        "feature-over-under-2026-tournament"
+      ],
+      "match": "末轮 vs 东道主美国"
+    },
+    {
+      "id": "review-brazil-haiti",
+      "type": "review",
+      "section": "赛后复盘",
+      "title": "巴西 vs 海地 复盘报告（2026-06-19）",
+      "date": "2026-06-19",
+      "summary": "首选比分：巴西 3-0（15%）",
+      "file": "review-brazil-haiti.md",
+      "tags": [
+        "赛后复盘",
+        "xG",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "实际比分",
+          "value": "巴西 vs 海地"
+        },
+        {
+          "label": "胜平负",
+          "value": "待补充"
+        },
+        {
+          "label": "大小球",
+          "value": "待补充"
+        },
+        {
+          "label": "复盘评分",
+          "value": "8.75/10"
+        }
+      ],
+      "related": [
+        "prediction-brazil-haiti",
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "巴西 vs 海地"
+    },
+    {
+      "id": "review-scotland-morocco",
+      "type": "review",
+      "section": "赛后复盘",
+      "title": "苏格兰 vs 摩洛哥 复盘报告（2026-06-19）",
+      "date": "2026-06-19",
+      "summary": "首选比分：摩洛哥 1-0（13%）",
+      "file": "review-scotland-morocco.md",
+      "tags": [
+        "赛后复盘",
+        "xG",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "实际比分",
+          "value": "苏格兰 vs 摩洛哥"
+        },
+        {
+          "label": "胜平负",
+          "value": "待补充"
+        },
+        {
+          "label": "大小球",
+          "value": "待补充"
+        },
+        {
+          "label": "复盘评分",
+          "value": "8.4/10"
+        }
+      ],
+      "related": [
+        "prediction-scotland-morocco",
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "苏格兰 vs 摩洛哥"
+    },
+    {
+      "id": "review-turkey-paraguay",
+      "type": "review",
+      "section": "赛后复盘",
+      "title": "土耳其 vs 巴拉圭 复盘报告（2026-06-19）",
+      "date": "2026-06-19",
+      "summary": "首选比分：土耳其 1-1 巴拉圭（13%）—— 首选平局",
+      "file": "review-turkey-paraguay.md",
+      "tags": [
+        "赛后复盘",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "实际比分",
+          "value": "土耳其 vs 巴拉圭"
+        },
+        {
+          "label": "胜平负",
+          "value": "待补充"
+        },
+        {
+          "label": "大小球",
+          "value": "待补充"
+        },
+        {
+          "label": "复盘评分",
+          "value": "4.0/10"
+        }
+      ],
+      "related": [
+        "prediction-turkey-paraguay",
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "土耳其 vs 巴拉圭"
+    },
+    {
+      "id": "review-usa-australia",
+      "type": "review",
+      "section": "赛后复盘",
+      "title": "美国 vs 澳大利亚 复盘报告（2026-06-19）",
+      "date": "2026-06-19",
+      "summary": "首选比分：美国 2-0（13%）",
+      "file": "review-usa-australia.md",
+      "tags": [
+        "赛后复盘",
+        "xG",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "实际比分",
+          "value": "美国 vs 澳大利亚"
+        },
+        {
+          "label": "胜平负",
+          "value": "待补充"
+        },
+        {
+          "label": "大小球",
+          "value": "待补充"
+        },
+        {
+          "label": "复盘评分",
+          "value": "8.5/10"
+        }
+      ],
+      "related": [
+        "prediction-usa-australia",
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "美国 vs 澳大利亚"
     },
     {
       "id": "prediction-mexico-south-korea",
@@ -350,6 +1050,7 @@ window.SITE_DATA = {
         }
       ],
       "related": [
+        "review-brazil-haiti",
         "feature-round2-matchday2-prediction",
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis"
@@ -387,48 +1088,12 @@ window.SITE_DATA = {
         }
       ],
       "related": [
+        "review-scotland-morocco",
         "feature-round2-matchday2-prediction",
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis"
       ],
       "match": "苏格兰 vs 摩洛哥"
-    },
-    {
-      "id": "prediction-turkey-paraguay",
-      "type": "prediction",
-      "section": "赛前预测",
-      "title": "2026-06-19 · 土耳其 vs 巴拉圭 · 预测",
-      "date": "2026-06-19",
-      "summary": "最可能比分：土耳其 1-1 巴拉圭（~13%）️ 平局信号优先",
-      "file": "prediction-turkey-paraguay.md",
-      "tags": [
-        "赛前预测",
-        "xG"
-      ],
-      "stats": [
-        {
-          "label": "预测比分",
-          "value": "1-1"
-        },
-        {
-          "label": "胜平负",
-          "value": "40/34/26"
-        },
-        {
-          "label": "总进球",
-          "value": "| xG 区间 | 1.20 - 1.65 | 0.90 - 1.35 |"
-        },
-        {
-          "label": "置信度",
-          "value": "中"
-        }
-      ],
-      "related": [
-        "feature-round2-matchday2-prediction",
-        "feature-wc2026-blowout-prediction",
-        "feature-blowout-analysis"
-      ],
-      "match": "土耳其 vs 巴拉圭"
     },
     {
       "id": "prediction-usa-australia",
@@ -461,6 +1126,7 @@ window.SITE_DATA = {
         }
       ],
       "related": [
+        "review-usa-australia",
         "feature-round2-matchday2-prediction",
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis"
@@ -468,52 +1134,13 @@ window.SITE_DATA = {
       "match": "美国 vs 澳大利亚"
     },
     {
-      "id": "feature-wc2026-blowout-prediction",
+      "id": "feature-over-under-2026-tournament",
       "type": "feature",
       "section": "专题研究",
-      "title": "2026 世界杯小组赛「大比分高概率场次」预测分析",
+      "title": "2026 世界杯大小球分析",
       "date": "2026-06-19",
-      "summary": "2026 世界杯小组赛「大比分高概率场次」预测分析",
-      "file": "feature-wc2026-blowout-prediction.md",
-      "tags": [
-        "专题研究",
-        "世界杯",
-        "大比分"
-      ],
-      "stats": [
-        {
-          "label": "1",
-          "value": "FIFA 排名差 ≥ 30"
-        },
-        {
-          "label": "2",
-          "value": "弱队为世界杯新军"
-        },
-        {
-          "label": "3",
-          "value": "弱队久违参赛 / 经验严重不足"
-        },
-        {
-          "label": "4",
-          "value": "亚洲/非洲防线 vs 欧洲/南美顶级锋线"
-        }
-      ],
-      "related": [
-        "feature-blowout-analysis",
-        "feature-round2-matchday2-prediction",
-        "feature-daily-brief-2026-06-16"
-      ],
-      "subtype": "大比分模型",
-      "match": "墨西哥 vs 南非"
-    },
-    {
-      "id": "feature-blowout-analysis",
-      "type": "feature",
-      "section": "专题研究",
-      "title": "2018 & 2022 世界杯「大比分比赛」特征深度分析报告",
-      "date": "2026-06-19",
-      "summary": "2018：12 场大比分中有 9 场（75%）包含定位球进球（点球、角球、任意球）",
-      "file": "feature-blowout-analysis.md",
+      "summary": "2026 目前场均比 2018 高出 +0.54 球（+20.5%）",
+      "file": "feature-over-under-2026-tournament.md",
       "tags": [
         "专题研究",
         "世界杯",
@@ -522,29 +1149,29 @@ window.SITE_DATA = {
       ],
       "stats": [
         {
-          "label": "1",
-          "value": "小组赛 A 组"
+          "label": "已赛场次",
+          "value": "28"
         },
         {
-          "label": "2",
-          "value": "小组赛 G 组"
+          "label": "总进球",
+          "value": "89"
         },
         {
-          "label": "3",
-          "value": "小组赛 G 组"
+          "label": "场均进球",
+          "value": "3.18"
         },
         {
-          "label": "4",
-          "value": "小组赛 B 组"
+          "label": "场均 2.5 球线",
+          "value": "超过 2.5"
         }
       ],
       "related": [
         "feature-wc2026-blowout-prediction",
-        "feature-round2-matchday2-prediction",
-        "feature-daily-brief-2026-06-16"
+        "feature-blowout-analysis",
+        "prediction-turkey-paraguay"
       ],
-      "subtype": "强弱差模型",
-      "match": "小组赛 A 组 俄罗斯 vs 沙特阿拉伯"
+      "subtype": "杩涚悆瓒嬪娍",
+      "match": "头名 vs 第三名可能有强弱差"
     },
     {
       "id": "prediction-canada-qatar",
@@ -1013,7 +1640,7 @@ window.SITE_DATA = {
       "related": [
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis",
-        "feature-daily-brief-2026-06-16"
+        "prediction-turkey-paraguay"
       ],
       "subtype": "赛程观察",
       "match": "法国 vs 伊拉克"
@@ -1250,7 +1877,7 @@ window.SITE_DATA = {
       "related": [
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis",
-        "feature-round2-matchday2-prediction"
+        "prediction-turkey-paraguay"
       ],
       "subtype": "赛程观察",
       "match": "哈兰德 vs 萨拉赫"
@@ -1290,7 +1917,7 @@ window.SITE_DATA = {
       "related": [
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis",
-        "feature-round2-matchday2-prediction"
+        "prediction-turkey-paraguay"
       ],
       "subtype": "教练研究"
     },
@@ -1329,7 +1956,7 @@ window.SITE_DATA = {
       "related": [
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis",
-        "feature-round2-matchday2-prediction"
+        "prediction-turkey-paraguay"
       ],
       "subtype": "教练研究"
     },
@@ -1368,7 +1995,7 @@ window.SITE_DATA = {
       "related": [
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis",
-        "feature-round2-matchday2-prediction"
+        "prediction-turkey-paraguay"
       ],
       "subtype": "教练研究"
     },
@@ -2525,7 +3152,7 @@ window.SITE_DATA = {
       "related": [
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis",
-        "feature-round2-matchday2-prediction"
+        "prediction-turkey-paraguay"
       ],
       "subtype": "进球趋势",
       "match": "墨西哥 vs 南非"
@@ -2644,7 +3271,7 @@ window.SITE_DATA = {
       "related": [
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis",
-        "feature-round2-matchday2-prediction"
+        "prediction-turkey-paraguay"
       ],
       "subtype": "进球趋势",
       "match": "墨西哥 vs 南非"
@@ -2683,7 +3310,7 @@ window.SITE_DATA = {
       "related": [
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis",
-        "feature-round2-matchday2-prediction"
+        "prediction-turkey-paraguay"
       ],
       "subtype": "小组赛观察",
       "match": "日 墨西哥 vs 南非"
@@ -2721,7 +3348,7 @@ window.SITE_DATA = {
       "related": [
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis",
-        "feature-round2-matchday2-prediction"
+        "prediction-turkey-paraguay"
       ],
       "subtype": "魔咒与历史规律",
       "match": "决赛对阵 西班牙 vs 法国"
@@ -2761,7 +3388,7 @@ window.SITE_DATA = {
       "related": [
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis",
-        "feature-round2-matchday2-prediction"
+        "prediction-turkey-paraguay"
       ],
       "subtype": "进球趋势",
       "match": "传控打法 vs 防守反击"

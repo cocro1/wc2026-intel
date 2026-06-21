@@ -67,6 +67,15 @@ const FEATURE_OVERRIDES = {
     id: "feature-round2-matchday2-prediction",
     file: "feature-round2-matchday2-prediction.md",
     subtype: "赛程观察"
+  },
+  "2026世界杯大小球分析.md": {
+    id: "feature-over-under-2026-tournament",
+    file: "feature-over-under-2026-tournament.md",
+    subtype: "杩涚悆瓒嬪娍"
+  },
+  "turkey-vs-paraguay-2026-prediction.md.md": {
+    id: "prediction-turkey-paraguay",
+    file: "prediction-turkey-paraguay.md"
   }
 };
 
@@ -87,11 +96,18 @@ function main() {
   const changedFiles = [];
   const newFiles = [];
 
-  const articles = sourceFiles.map((name) => {
+  const latestById = new Map();
+  for (const name of sourceFiles) {
     const article = buildArticle(name);
+    const current = latestById.get(article.id);
+    if (!current || article.sourceMtime >= current.sourceMtime) {
+      latestById.set(article.id, article);
+    }
+  }
+  const articles = Array.from(latestById.values());
+  for (const article of articles) {
     syncContent(article, existingAsciiFiles, changedFiles, newFiles);
-    return article;
-  });
+  }
 
   articles.sort(sortArticles);
   attachRelated(articles);
@@ -157,15 +173,15 @@ function buildArticle(name) {
 
 function detectType(name) {
   if (FEATURE_OVERRIDES[name]) return "feature";
-  if (name.startsWith("review-")) return "review";
+  if (/(^review-)|(-review\.md$)/i.test(name)) return "review";
   if (name.includes("prediction")) return "prediction";
   return "feature";
 }
 
 function buildIdentity(type, name) {
+  if (FEATURE_OVERRIDES[name]) return FEATURE_OVERRIDES[name];
+
   if (type === "feature") {
-    const override = FEATURE_OVERRIDES[name];
-    if (override) return override;
     const slug = slugify(stripExtension(name));
     return { id: "feature-" + slug, file: "feature-" + slug + ".md" };
   }
@@ -173,7 +189,8 @@ function buildIdentity(type, name) {
   const base = stripExtension(name)
     .replace(/^review-/, "")
     .replace(/^\d{4}-\d{2}-\d{2}-/, "")
-    .replace(/-prediction$/, "")
+    .replace(/-prediction(?:\.md)?$/i, "")
+    .replace(/-review(?:\.md)?$/i, "")
     .replace(/^review-\d{4}-\d{2}-\d{2}-/, "");
   const slug = slugify(base);
 
