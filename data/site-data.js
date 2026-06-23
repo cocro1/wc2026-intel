@@ -1,18 +1,18 @@
 window.SITE_DATA = {
-  "updatedAt": "2026-06-22 19:11",
+  "updatedAt": "2026-06-23 19:02",
   "dashboard": {
     "headline": "2026 世界杯预测、复盘与专题研究中枢",
     "subtitle": "把赛前判断、赛后校准、模型战绩和趋势信号放进同一套静态结构里，方便持续更新。",
     "today": {
       "title": "今日主推",
-      "match": "巴拿马 vs 克罗地亚",
-      "time": "2026-06-22",
-      "score": "1-2",
-      "confidence": "中",
+      "match": "阿根廷 vs 奥地利",
+      "time": "2026-06-23",
+      "score": "2-0",
+      "confidence": "高",
       "probabilities": [
         {
-          "label": "巴拿马",
-          "value": 18,
+          "label": "阿根廷",
+          "value": 58,
           "tone": "green"
         },
         {
@@ -21,17 +21,17 @@ window.SITE_DATA = {
           "tone": "gold"
         },
         {
-          "label": "克罗地亚",
-          "value": 57,
+          "label": "奥地利",
+          "value": 17,
           "tone": "red"
         }
       ],
       "reasons": [
-        "比赛: 巴拿马 vs 克罗地亚",
-        "时间: 2026-06-22 19:00 (当地时间00:00)",
-        "地点: BMO球场，多伦多 · 中立场地"
+        "双方： 阿根廷 vs 奥地利",
+        "时间： 2026-06-22 12:00 CT (达拉斯当地时间) / 2026-06-23 01:00 北京时间",
+        "地点： AT&T体育场，达拉斯（德克萨斯州）"
       ],
-      "articleId": "prediction-panama-croatia"
+      "articleId": "prediction-argentina-austria"
     },
     "reviewCards": [
       {
@@ -52,7 +52,7 @@ window.SITE_DATA = {
     "metrics": [
       {
         "label": "站内文章",
-        "value": "88",
+        "value": "90",
         "note": "四大板块统一索引，按时间倒序更新"
       },
       {
@@ -100,8 +100,8 @@ window.SITE_DATA = {
     "signals": [
       {
         "label": "今日主推",
-        "value": "巴拿马 vs 克罗地亚",
-        "note": "比赛: 巴拿马 vs 克罗地亚"
+        "value": "阿根廷 vs 奥地利",
+        "note": "双方： 阿根廷 vs 奥地利"
       },
       {
         "label": "最新专题",
@@ -115,7 +115,7 @@ window.SITE_DATA = {
       },
       {
         "label": "预测储备",
-        "value": "4 场",
+        "value": "5 场",
         "note": "已写入后续赛程的赛前预测"
       }
     ],
@@ -127,6 +127,201 @@ window.SITE_DATA = {
     ]
   },
   "articles": [
+    {
+      "id": "prediction-2026-06-24-worldcup-dixon-coles-predictions",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "2026美加墨世界杯 · Dixon-Coles 精算预测报告",
+      "date": "2026-06-24",
+      "summary": "[Portugal vs Uzbekistan（Group K MD2）](1-portugal-vs-uzbekistan)",
+      "file": "prediction-2026-06-24-worldcup-dixon-coles-predictions.md",
+      "tags": [
+        "赛前预测",
+        "世界杯",
+        "大比分",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-1"
+        },
+        {
+          "label": "胜平负",
+          "value": "65.9/68.7/7.6"
+        },
+        {
+          "label": "总进球",
+          "value": "- 概率：32.6%（总进球≥4或分差≥3）"
+        },
+        {
+          "label": "置信度",
+          "value": "模型置信度"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "Colombia vs DR"
+    },
+    {
+      "id": "prediction-england-ghana",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "英格兰 vs 加纳 — 2026世界杯预测",
+      "date": "2026-06-24",
+      "summary": "比赛: 英格兰 vs 加纳",
+      "file": "prediction-england-ghana.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "71/18/11"
+        },
+        {
+          "label": "总进球",
+          "value": "预期xG区间：英格兰 2.5-3.2 / 加纳 0.4-0.7 / 总xG 2.9-3.9"
+        },
+        {
+          "label": "置信度",
+          "value": "高"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "英格兰 vs 加纳"
+    },
+    {
+      "id": "prediction-colombia-congo-dr",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "哥伦比亚 vs 刚果(金) — 2026世界杯预测",
+      "date": "2026-06-24",
+      "summary": "比赛: 哥伦比亚 vs 刚果(金)",
+      "file": "prediction-colombia-congo-dr.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "62/22/16"
+        },
+        {
+          "label": "总进球",
+          "value": "预期xG区间：哥伦比亚 1.8-2.5 / 刚果(金) 0.5-0.8 / 总xG 2.3-3.3"
+        },
+        {
+          "label": "置信度",
+          "value": "中"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "哥伦比亚 vs 刚果(金)"
+    },
+    {
+      "id": "prediction-panama-croatia",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "巴拿马 vs 克罗地亚 — 2026世界杯预测",
+      "date": "2026-06-24",
+      "summary": "比赛: 巴拿马 vs 克罗地亚",
+      "file": "prediction-panama-croatia.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "2-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "13/22/65"
+        },
+        {
+          "label": "总进球",
+          "value": "预期xG区间：克罗地亚 1.8-2.5 / 巴拿马 0.4-0.7 / 总xG 2.2-3.2"
+        },
+        {
+          "label": "置信度",
+          "value": "高"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "巴拿马 vs 克罗地亚"
+    },
+    {
+      "id": "prediction-portugal-uzbekistan",
+      "type": "prediction",
+      "section": "赛前预测",
+      "title": "葡萄牙 vs 乌兹别克斯坦 — 2026世界杯预测",
+      "date": "2026-06-24",
+      "summary": "比赛: 葡萄牙 vs 乌兹别克斯坦",
+      "file": "prediction-portugal-uzbekistan.md",
+      "tags": [
+        "赛前预测",
+        "xG",
+        "世界杯",
+        "进球趋势"
+      ],
+      "stats": [
+        {
+          "label": "预测比分",
+          "value": "3-0"
+        },
+        {
+          "label": "胜平负",
+          "value": "74/17/9"
+        },
+        {
+          "label": "总进球",
+          "value": "预期xG区间：葡萄牙 2.5-3.2 / 乌兹别克斯坦 0.3-0.6 / 总xG 2.8-3.8"
+        },
+        {
+          "label": "置信度",
+          "value": "高"
+        }
+      ],
+      "related": [
+        "feature-round2-matchday2-prediction",
+        "feature-wc2026-blowout-prediction",
+        "feature-blowout-analysis"
+      ],
+      "match": "葡萄牙 vs 乌兹别克斯坦"
+    },
     {
       "id": "prediction-argentina-austria",
       "type": "prediction",
@@ -284,31 +479,31 @@ window.SITE_DATA = {
       "match": "挪威 vs 塞内加尔"
     },
     {
-      "id": "prediction-panama-croatia",
+      "id": "prediction-2026-06-23-worldcup-dixon-coles-predictions",
       "type": "prediction",
       "section": "赛前预测",
-      "title": "巴拿马 vs 克罗地亚 — 2026世界杯预测",
-      "date": "2026-06-22",
-      "summary": "比赛: 巴拿马 vs 克罗地亚",
-      "file": "prediction-panama-croatia.md",
+      "title": "2026美加墨世界杯 · Dixon-Coles蒙特卡洛精算预测报告",
+      "date": "2026-06-23",
+      "summary": "[阿根廷 🇦🇷 vs 奥地利 🇦🇹](1-阿根廷-vs-奥地利)",
+      "file": "prediction-2026-06-23-worldcup-dixon-coles-predictions.md",
       "tags": [
         "赛前预测",
-        "xG",
         "世界杯",
+        "大比分",
         "进球趋势"
       ],
       "stats": [
         {
           "label": "预测比分",
-          "value": "1-2"
+          "value": "2-1"
         },
         {
           "label": "胜平负",
-          "value": "18/25/57"
+          "value": "39.6/21.5/26.3"
         },
         {
           "label": "总进球",
-          "value": "预期xG区间: 巴拿马 xG 0.5-0.9 / 克罗地亚 xG 1.5-2.1 / 总 xG 2.0-3.0"
+          "value": "| 平均总进球 | 3.32 球 |"
         },
         {
           "label": "置信度",
@@ -320,124 +515,86 @@ window.SITE_DATA = {
         "feature-wc2026-blowout-prediction",
         "feature-blowout-analysis"
       ],
-      "match": "巴拿马 vs 克罗地亚"
+      "match": "2026 06 23worldcup vs dixon coles predictions"
     },
     {
-      "id": "prediction-colombia-congo-dr",
-      "type": "prediction",
-      "section": "赛前预测",
-      "title": "哥伦比亚 vs 刚果(金) — 2026世界杯预测",
-      "date": "2026-06-22",
-      "summary": "比赛: 哥伦比亚 vs 刚果(金)",
-      "file": "prediction-colombia-congo-dr.md",
+      "id": "feature-wc2026-blowout-prediction",
+      "type": "feature",
+      "section": "专题研究",
+      "title": "2026 世界杯小组赛「大比分高概率场次」预测分析",
+      "date": "2026-06-23",
+      "summary": "2026 世界杯小组赛「大比分高概率场次」预测分析",
+      "file": "feature-wc2026-blowout-prediction.md",
       "tags": [
-        "赛前预测",
-        "xG",
+        "专题研究",
         "世界杯",
+        "大比分"
+      ],
+      "stats": [
+        {
+          "label": "1",
+          "value": "FIFA 排名差 ≥ 30"
+        },
+        {
+          "label": "2",
+          "value": "弱队为世界杯新军"
+        },
+        {
+          "label": "3",
+          "value": "弱队久违参赛 / 经验严重不足"
+        },
+        {
+          "label": "4",
+          "value": "亚洲/非洲防线 vs 欧洲/南美顶级锋线"
+        }
+      ],
+      "related": [
+        "feature-blowout-analysis",
+        "prediction-turkey-paraguay",
+        "feature-over-under-2026-tournament"
+      ],
+      "subtype": "大比分模型",
+      "match": "墨西哥 vs 南非"
+    },
+    {
+      "id": "feature-blowout-analysis",
+      "type": "feature",
+      "section": "专题研究",
+      "title": "2018 & 2022 世界杯「大比分比赛」特征深度分析报告",
+      "date": "2026-06-23",
+      "summary": "2018：12 场大比分中有 9 场（75%）包含定位球进球（点球、角球、任意球）",
+      "file": "feature-blowout-analysis.md",
+      "tags": [
+        "专题研究",
+        "世界杯",
+        "大比分",
         "进球趋势"
       ],
       "stats": [
         {
-          "label": "预测比分",
-          "value": "2-0"
+          "label": "1",
+          "value": "小组赛 A 组"
         },
         {
-          "label": "胜平负",
-          "value": "55/27/18"
+          "label": "2",
+          "value": "小组赛 G 组"
         },
         {
-          "label": "总进球",
-          "value": "预期xG区间: 哥伦比亚 xG 1.3-1.8 / 刚果(金) xG 0.4-0.8 / 总 xG 1.7-2.6"
+          "label": "3",
+          "value": "小组赛 G 组"
         },
         {
-          "label": "置信度",
-          "value": "中"
+          "label": "4",
+          "value": "小组赛 B 组"
         }
       ],
       "related": [
-        "feature-round2-matchday2-prediction",
         "feature-wc2026-blowout-prediction",
-        "feature-blowout-analysis"
+        "prediction-turkey-paraguay",
+        "feature-over-under-2026-tournament"
       ],
-      "match": "哥伦比亚 vs 刚果(金)"
-    },
-    {
-      "id": "prediction-england-ghana",
-      "type": "prediction",
-      "section": "赛前预测",
-      "title": "英格兰 vs 加纳 — 2026世界杯预测",
-      "date": "2026-06-22",
-      "summary": "比赛: 英格兰 vs 加纳",
-      "file": "prediction-england-ghana.md",
-      "tags": [
-        "赛前预测",
-        "xG",
-        "世界杯",
-        "进球趋势"
-      ],
-      "stats": [
-        {
-          "label": "预测比分",
-          "value": "3-1"
-        },
-        {
-          "label": "胜平负",
-          "value": "68/20/12"
-        },
-        {
-          "label": "总进球",
-          "value": "预期xG区间: 英格兰 xG 2.2-2.8 / 加纳 xG 0.6-1.0 / 总 xG 2.8-3.8"
-        },
-        {
-          "label": "置信度",
-          "value": "高"
-        }
-      ],
-      "related": [
-        "feature-round2-matchday2-prediction",
-        "feature-wc2026-blowout-prediction",
-        "feature-blowout-analysis"
-      ],
-      "match": "英格兰 vs 加纳"
-    },
-    {
-      "id": "prediction-portugal-uzbekistan",
-      "type": "prediction",
-      "section": "赛前预测",
-      "title": "葡萄牙 vs 乌兹别克斯坦 — 2026世界杯预测",
-      "date": "2026-06-22",
-      "summary": "比赛: 葡萄牙 vs 乌兹别克斯坦",
-      "file": "prediction-portugal-uzbekistan.md",
-      "tags": [
-        "赛前预测",
-        "xG",
-        "世界杯",
-        "进球趋势"
-      ],
-      "stats": [
-        {
-          "label": "预测比分",
-          "value": "3-0"
-        },
-        {
-          "label": "胜平负",
-          "value": "72/18/10"
-        },
-        {
-          "label": "总进球",
-          "value": "预期xG区间: 葡萄牙 xG 2.5-3.2 / 乌兹别克斯坦 xG 0.3-0.7 / 总 xG 2.8-3.9"
-        },
-        {
-          "label": "置信度",
-          "value": "高"
-        }
-      ],
-      "related": [
-        "feature-round2-matchday2-prediction",
-        "feature-wc2026-blowout-prediction",
-        "feature-blowout-analysis"
-      ],
-      "match": "葡萄牙 vs 乌兹别克斯坦"
+      "subtype": "强弱差模型",
+      "match": "俄罗斯 vs 沙特阿拉伯"
     },
     {
       "id": "prediction-belgium-iran",
@@ -594,85 +751,6 @@ window.SITE_DATA = {
         "feature-blowout-analysis"
       ],
       "match": "乌拉圭 vs 佛得角"
-    },
-    {
-      "id": "feature-wc2026-blowout-prediction",
-      "type": "feature",
-      "section": "专题研究",
-      "title": "2026 世界杯小组赛「大比分高概率场次」预测分析",
-      "date": "2026-06-22",
-      "summary": "2026 世界杯小组赛「大比分高概率场次」预测分析",
-      "file": "feature-wc2026-blowout-prediction.md",
-      "tags": [
-        "专题研究",
-        "世界杯",
-        "大比分"
-      ],
-      "stats": [
-        {
-          "label": "1",
-          "value": "FIFA 排名差 ≥ 30"
-        },
-        {
-          "label": "2",
-          "value": "弱队为世界杯新军"
-        },
-        {
-          "label": "3",
-          "value": "弱队久违参赛 / 经验严重不足"
-        },
-        {
-          "label": "4",
-          "value": "亚洲/非洲防线 vs 欧洲/南美顶级锋线"
-        }
-      ],
-      "related": [
-        "feature-blowout-analysis",
-        "prediction-turkey-paraguay",
-        "feature-over-under-2026-tournament"
-      ],
-      "subtype": "大比分模型",
-      "match": "墨西哥 vs 南非"
-    },
-    {
-      "id": "feature-blowout-analysis",
-      "type": "feature",
-      "section": "专题研究",
-      "title": "2018 & 2022 世界杯「大比分比赛」特征深度分析报告",
-      "date": "2026-06-22",
-      "summary": "2018：12 场大比分中有 9 场（75%）包含定位球进球（点球、角球、任意球）",
-      "file": "feature-blowout-analysis.md",
-      "tags": [
-        "专题研究",
-        "世界杯",
-        "大比分",
-        "进球趋势"
-      ],
-      "stats": [
-        {
-          "label": "1",
-          "value": "小组赛 A 组"
-        },
-        {
-          "label": "2",
-          "value": "小组赛 G 组"
-        },
-        {
-          "label": "3",
-          "value": "小组赛 G 组"
-        },
-        {
-          "label": "4",
-          "value": "小组赛 B 组"
-        }
-      ],
-      "related": [
-        "feature-wc2026-blowout-prediction",
-        "prediction-turkey-paraguay",
-        "feature-over-under-2026-tournament"
-      ],
-      "subtype": "强弱差模型",
-      "match": "俄罗斯 vs 沙特阿拉伯"
     },
     {
       "id": "review-tunisia-japan",
